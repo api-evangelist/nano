@@ -1,0 +1,30 @@
+name: Nano RPC Rate Limits
+description: The Nano RPC protocol does not impose rate limits at the protocol level. Nano is a decentralized, open-source network where developers run their own nodes. Rate limiting, if any, is determined by the node operator or third-party RPC provider. The Nano Foundation does not operate a public hosted API service with defined rate limits.
+rateLimits:
+  - name: Protocol-Level Rate Limiting
+    description: No rate limits are defined at the Nano RPC protocol level. The protocol accepts all valid JSON HTTP POST requests to the configured RPC port.
+    scope: protocol
+    limit: None
+    window: N/A
+    notes: Node operators may configure firewall rules or reverse proxy rate limiting independently.
+  - name: Self-Hosted Node
+    description: When running your own Nano node, you control access to the RPC port (default 7076). Rate limiting is the responsibility of the operator via external tooling such as nginx, iptables, or application-level middleware.
+    scope: operator
+    limit: Operator-defined
+    window: Operator-defined
+    notes: >
+      The RPC server binds to localhost by default. Exposing it externally requires
+      explicit configuration and is strongly discouraged without appropriate access controls,
+      as some commands (enable_control) can affect node operation and wallet funds.
+  - name: Work Generation
+    description: Proof-of-work generation via work_generate RPC is computationally intensive. Operators may limit this endpoint separately or offload to dedicated work peers.
+    scope: endpoint
+    limit: Computational/hardware bound
+    window: Per request
+    notes: Work peers (work_peer_add) can distribute work generation load.
+  - name: Third-Party Providers
+    description: Third-party Nano RPC providers set their own rate limits. Consult the specific provider's documentation for their rate limit policies.
+    scope: provider
+    limit: Provider-defined
+    window: Provider-defined
+    notes: Available providers listed at https://hub.nano.org/developer-tools

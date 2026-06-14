@@ -1,0 +1,147 @@
+name: Nano
+description: Nano is a feeless, instant digital currency using a block-lattice architecture. It provides a JSON-RPC HTTP API for querying accounts, retrieving block information, managing wallets, processing transactions, and interacting with the Nano network. Each account maintains its own blockchain, enabling fast and lightweight consensus without mining.
+image: https://nano.org/favicon.ico
+url: https://raw.githubusercontent.com/api-evangelist/nano/refs/heads/main/apis.yml
+created: '2026-06-14'
+modified: '2026-06-14'
+specificationVersion: '0.19'
+tags:
+  - Cryptocurrency
+  - Payments
+  - Blockchain
+  - Feeless
+  - Instant Payments
+  - Digital Currency
+apis:
+  - name: Nano RPC API - Account Operations
+    description: JSON-RPC endpoints for querying Nano account balances, history, representatives, voting weight, and frontier block information. Supports both single and bulk account queries.
+    image: https://nano.org/favicon.ico
+    humanURL: https://docs.nano.org/commands/rpc-protocol/
+    baseURL: http://localhost:7076
+    tags:
+      - Accounts
+      - Balances
+      - History
+      - Representatives
+    properties:
+      - type: Documentation
+        url: https://docs.nano.org/commands/rpc-protocol/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/nano/refs/heads/main/openapi.yml
+    contact:
+      - FN: Nano Foundation
+        email: integrations@nano.org
+        url: https://nano.org/en/developers
+    meta:
+      - key: rpcActions
+        value: account_balance, account_block_count, account_get, account_history, account_info, account_key, account_representative, account_weight, accounts_balances, accounts_frontiers, accounts_receivable, accounts_representatives, available_supply
+  - name: Nano RPC API - Block Operations
+    description: JSON-RPC endpoints for creating, querying, publishing, and confirming blocks on the Nano network. Includes block hash computation, chain traversal, and work generation for proof-of-work.
+    image: https://nano.org/favicon.ico
+    humanURL: https://docs.nano.org/commands/rpc-protocol/
+    baseURL: http://localhost:7076
+    tags:
+      - Blocks
+      - Transactions
+      - Work Generation
+      - Ledger
+    properties:
+      - type: Documentation
+        url: https://docs.nano.org/commands/rpc-protocol/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/nano/refs/heads/main/openapi.yml
+    contact:
+      - FN: Nano Foundation
+        email: integrations@nano.org
+        url: https://nano.org/en/developers
+    meta:
+      - key: rpcActions
+        value: block_account, block_confirm, block_count, block_create, block_hash, block_info, blocks, blocks_info, chain, process, republish, sign, successors, work_cancel, work_generate, work_validate
+  - name: Nano RPC API - Node Operations
+    description: JSON-RPC endpoints for managing and monitoring a Nano node, including bootstrap operations, peer management, telemetry, statistics, confirmation status, and network diagnostics.
+    image: https://nano.org/favicon.ico
+    humanURL: https://docs.nano.org/commands/rpc-protocol/
+    baseURL: http://localhost:7076
+    tags:
+      - Node
+      - Network
+      - Peers
+      - Bootstrap
+      - Telemetry
+    properties:
+      - type: Documentation
+        url: https://docs.nano.org/commands/rpc-protocol/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/nano/refs/heads/main/openapi.yml
+    contact:
+      - FN: Nano Foundation
+        email: integrations@nano.org
+        url: https://nano.org/en/developers
+    meta:
+      - key: rpcActions
+        value: bootstrap, bootstrap_any, bootstrap_lazy, bootstrap_status, confirmation_active, confirmation_history, confirmation_info, confirmation_quorum, delegators, delegators_count, election_statistics, frontier_count, frontiers, keepalive, ledger, node_id, peers, populate_backlog, receivable, receivable_exists, representatives, representatives_online, stats, telemetry, uptime, validate_account_number, version
+  - name: Nano RPC API - Wallet Operations
+    description: JSON-RPC endpoints for managing local Nano wallets, including creating and managing accounts, sending and receiving funds, locking wallets, and exporting wallet data. Intended for development and testing environments.
+    image: https://nano.org/favicon.ico
+    humanURL: https://docs.nano.org/commands/rpc-protocol/
+    baseURL: http://localhost:7076
+    tags:
+      - Wallets
+      - Accounts
+      - Send
+      - Receive
+      - Development
+    properties:
+      - type: Documentation
+        url: https://docs.nano.org/commands/rpc-protocol/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/nano/refs/heads/main/openapi.yml
+    contact:
+      - FN: Nano Foundation
+        email: integrations@nano.org
+        url: https://nano.org/en/developers
+    meta:
+      - key: rpcActions
+        value: account_create, account_list, account_move, account_remove, account_representative_set, accounts_create, password_change, password_enter, password_valid, receive, receive_minimum, receive_minimum_set, search_receivable, search_receivable_all, send, wallet_add, wallet_add_watch, wallet_balances, wallet_change_seed, wallet_contains, wallet_create, wallet_destroy, wallet_export, wallet_frontiers, wallet_history, wallet_info, wallet_ledger, wallet_lock, wallet_locked, wallet_receivable, wallet_representative, wallet_representative_set, wallet_republish, wallet_work_get, work_get, work_set
+  - name: Nano RPC API - Unit Conversion
+    description: JSON-RPC endpoints for converting between Nano units and raw units, enabling accurate denomination handling for display and transaction processing.
+    image: https://nano.org/favicon.ico
+    humanURL: https://docs.nano.org/commands/rpc-protocol/
+    baseURL: http://localhost:7076
+    tags:
+      - Unit Conversion
+      - Currency
+      - Denominations
+    properties:
+      - type: Documentation
+        url: https://docs.nano.org/commands/rpc-protocol/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/nano/refs/heads/main/openapi.yml
+    contact:
+      - FN: Nano Foundation
+        email: integrations@nano.org
+        url: https://nano.org/en/developers
+    meta:
+      - key: rpcActions
+        value: nano_to_raw, raw_to_nano
+common:
+  - type: Website
+    url: https://nano.org
+  - type: Documentation
+    url: https://docs.nano.org
+  - type: IntegrationGuides
+    url: https://docs.nano.org/integration-guides/
+  - type: WhitePaper
+    url: https://docs.nano.org/living-whitepaper/
+  - type: ReleaseNotes
+    url: https://docs.nano.org/releases/current-release-notes/
+  - type: DeveloperTools
+    url: https://hub.nano.org/developer-tools
+  - type: GitHub
+    url: https://github.com/nanocurrency
+  - type: Contact
+    url: mailto:integrations@nano.org
+maintainers:
+  - FN: API Evangelist
+    url: https://apievangelist.com
+    email: info@apievangelist.com

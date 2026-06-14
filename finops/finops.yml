@@ -1,0 +1,52 @@
+name: Nano API FinOps
+description: Nano is a feeless cryptocurrency network. There are no transaction fees, no API usage fees from the Nano Foundation, and no costs associated with calling the RPC API on a self-hosted node beyond infrastructure costs. FinOps considerations for Nano center on node infrastructure and any third-party service costs.
+costs:
+  - name: Transaction Fees
+    description: Nano has zero transaction fees. Sending and receiving Nano incurs no protocol-level cost. This is a core design feature of the network.
+    amount: '0.00'
+    currency: USD
+    unit: per transaction
+    notes: No fees for any volume of transactions on the Nano network.
+  - name: RPC API Usage
+    description: The Nano RPC API has no usage fees from the Nano Foundation. Developers access the API by running their own nodes.
+    amount: '0.00'
+    currency: USD
+    unit: per API call
+    notes: Infrastructure costs for running a node are the operator's responsibility.
+  - name: Node Infrastructure
+    description: Running a Nano node requires server infrastructure. Costs depend on hardware or cloud hosting choices made by the operator.
+    amount: Varies
+    currency: USD
+    unit: per month
+    notes: >
+      Minimum recommended specs for a Nano node include a modern multi-core CPU,
+      4+ GB RAM, and SSD storage for the ledger (ledger size grows over time).
+      Cloud VPS instances suitable for a Nano node start at approximately $5-20/month
+      depending on provider and region.
+  - name: Work Generation Infrastructure
+    description: Proof-of-work generation for sending transactions requires computational resources. GPU-based work generation is significantly faster than CPU-based.
+    amount: Varies
+    currency: USD
+    unit: per work unit
+    notes: >
+      Work can be offloaded to dedicated work peers or third-party work services.
+      Some third-party work services may charge for high-volume generation.
+  - name: Third-Party RPC Services
+    description: Third-party providers offering hosted Nano RPC access may charge subscription or per-request fees. Pricing varies by provider.
+    amount: Varies
+    currency: USD
+    unit: per subscription or request
+    notes: See https://hub.nano.org/developer-tools for available third-party tools and services.
+savings:
+  - name: Zero Protocol Fees
+    description: Unlike most blockchain networks, Nano has no transaction fees, eliminating per-transaction costs entirely at the protocol level.
+    type: cost-avoidance
+    notes: Enables high-volume microtransaction use cases without fee accumulation.
+  - name: Self-Hosted Node
+    description: Running your own node eliminates third-party API provider costs and gives full control over all RPC endpoints including wallet and control commands.
+    type: cost-control
+    notes: Recommended for production integrations to avoid third-party dependency and cost.
+  - name: Lightweight Node Option
+    description: Nano supports lightweight wallet integrations that do not require running a full archival node, reducing storage and infrastructure costs.
+    type: cost-reduction
+    notes: See integration guides at https://docs.nano.org/integration-guides/ for lightweight approaches.

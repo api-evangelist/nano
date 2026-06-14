@@ -1,0 +1,44 @@
+name: Nano API Plans
+description: Nano operates as an open-source, decentralized network. There are no official hosted API plans or subscription tiers from the Nano Foundation. Developers run their own Nano nodes and access the RPC API locally or via self-hosted infrastructure. Third-party node providers and RPC services may offer their own access tiers.
+plans:
+  - name: Self-Hosted Node
+    description: Run your own Nano node and access the full RPC API locally. No fees, no rate limits imposed by the Nano Foundation. All RPC commands available subject to node configuration and enable_control settings.
+    url: https://docs.nano.org/running-a-node/overview/
+    status: active
+    pricing:
+      - price: '0.00'
+        unit: node operation
+        currency: USD
+    features:
+      - Full Node RPC API access
+      - All account query operations
+      - Block management and processing
+      - Wallet operations (enable_control required)
+      - Work generation
+      - Network peer management
+      - Bootstrap operations
+      - Telemetry and statistics
+      - No usage fees
+      - No rate limits from Nano Foundation
+    limits:
+      - type: Rate Limiting
+        value: None imposed by protocol; self-determined by operator
+      - type: API Commands
+        value: All Node RPCs, Wallet RPCs, and Unit Conversion RPCs
+  - name: Third-Party RPC Provider
+    description: Use a third-party hosted Nano node RPC service. Plans and pricing vary by provider. Suitable for developers who do not want to run their own node infrastructure.
+    url: https://hub.nano.org/developer-tools
+    status: active
+    pricing:
+      - price: Varies
+        unit: request or subscription
+        currency: USD
+    features:
+      - Managed node infrastructure
+      - Subset of RPC API (provider-dependent)
+      - No infrastructure management
+    limits:
+      - type: Rate Limiting
+        value: Provider-defined
+      - type: API Commands
+        value: Provider-defined subset (wallet/control RPCs typically restricted)
