@@ -1,0 +1,137 @@
+vocabulary:
+  name: Nano RPC Vocabulary
+  description: Key terms and concepts used in the Nano RPC API and block-lattice network
+
+  terms:
+
+    - term: account
+      definition: >
+        A Nano address derived from an Ed25519 public key, prefixed with "nano_".
+        Each account maintains its own independent blockchain (account chain).
+      example: "nano_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3"
+
+    - term: raw
+      definition: >
+        The smallest indivisible unit of Nano. 1 Nano = 10^30 raw. All RPC amounts
+        are expressed in raw to avoid floating-point precision issues.
+      example: "1000000000000000000000000000000"
+
+    - term: nano
+      definition: >
+        The primary denomination of the Nano currency. 1 Nano = 10^30 raw units.
+        Used for human-facing display but RPC operations use raw.
+
+    - term: block
+      definition: >
+        A signed data structure that represents a state change on an account chain.
+        All current blocks are "state" blocks containing account, previous, representative,
+        balance, and link fields.
+      subtypes:
+        - send: Balance decreases; link = destination account public key
+        - receive: Balance increases; link = hash of the send block being received
+        - open: First block on an account chain; previous = all zeros
+        - change: Changes the representative; link = all zeros
+        - epoch: Network upgrade block; issued by the Nano Foundation
+
+    - term: hash
+      definition: >
+        A 64-character uppercase hexadecimal Blake2b hash uniquely identifying a block.
+      example: "87434F8041869A01C8F6F263B87972D7BA443A72E0A97D7A3FD0CCC2358FD6F9"
+
+    - term: frontier
+      definition: >
+        The hash of the most recent (head) block on an account's chain. Also called
+        the head block.
+
+    - term: representative
+      definition: >
+        An account delegated to vote in the consensus protocol on behalf of another
+        account's balance. Representatives accumulate voting weight from delegators.
+
+    - term: work
+      definition: >
+        A proof-of-work nonce satisfying the difficulty threshold for a given block hash.
+        Computed over the previous block hash (or account public key for open blocks).
+        Prevents spam without mining rewards.
+      example: "8a142e07a10996d5"
+
+    - term: difficulty
+      definition: >
+        A threshold value that proof-of-work must meet or exceed. Higher difficulty
+        requires more computation. Expressed as a hex string.
+
+    - term: receivable
+      definition: >
+        A send block that has been confirmed on the sender's chain but not yet received
+        by the destination account. Previously called "pending". The destination must
+        create a receive block to claim the funds.
+
+    - term: wallet
+      definition: >
+        A local, software-managed collection of private keys (accounts) stored on a
+        Nano node. Wallet RPCs are intended for development and testing; production
+        applications should manage keys externally.
+      example: "000D1BAEC8EC208142C99059B393051BAC8380F9B5A2E6B2489A277D81789F3F"
+
+    - term: seed
+      definition: >
+        A 64-character hex master secret from which deterministic account keys are
+        derived. Backing up the seed recovers all wallet accounts.
+
+    - term: action
+      definition: >
+        The required field in every Nano RPC request body that identifies which
+        command to execute (e.g., "account_balance", "send", "block_info").
+
+    - term: block-lattice
+      definition: >
+        Nano's core data structure: each account has its own independent blockchain.
+        Transfers require two blocks — a send block from the sender and a receive
+        block from the recipient — enabling asynchronous, parallel processing.
+
+    - term: confirmation
+      definition: >
+        The process by which representatives vote on blocks to establish network
+        consensus. A block is confirmed when votes representing a quorum of online
+        voting weight (67%) agree on it.
+
+    - term: quorum
+      definition: >
+        The minimum online voting weight (default 67% of online stake) required for
+        a block to be confirmed by the network. Returns via confirmation_quorum RPC.
+
+    - term: delegator
+      definition: >
+        An account that has delegated its balance weight to a representative for voting
+        purposes, without transferring ownership of funds.
+
+    - term: election
+      definition: >
+        The consensus process for confirming a specific block or fork on the network.
+        Representatives broadcast votes and the election resolves when quorum is reached.
+
+    - term: bootstrap
+      definition: >
+        The process of syncing ledger data from peers when a node first starts or
+        falls behind. Modes include legacy (bulk frontier download), lazy (hash-based),
+        and ascending (v25+).
+
+    - term: telemetry
+      definition: >
+        Lightweight node health metrics broadcast to peers, including block counts,
+        bandwidth, and protocol version. Retrieved via the telemetry RPC.
+
+    - term: node_id
+      definition: >
+        A unique Ed25519 keypair identifying a Nano node on the network, separate
+        from any account keys. Used for peer identification.
+
+    - term: open_block
+      definition: >
+        The first block on an account's chain, created when the account first
+        receives Nano. The previous field is all zeros.
+
+    - term: subtype
+      definition: >
+        Semantic classification of a state block: send, receive, open, change, or
+        epoch. Required when processing blocks via the process RPC.

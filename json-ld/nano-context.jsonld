@@ -1,0 +1,160 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "nano": "https://nano.org/vocab#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+
+    "NanoAccount": {
+      "@id": "nano:NanoAccount",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A Nano network account identified by a nano_ prefixed address"
+    },
+
+    "NanoBlock": {
+      "@id": "nano:NanoBlock",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A signed state block on the Nano block-lattice"
+    },
+
+    "NanoWallet": {
+      "@id": "nano:NanoWallet",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A local wallet storing Nano account private keys"
+    },
+
+    "NanoTransaction": {
+      "@id": "nano:NanoTransaction",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A Nano value transfer consisting of a send block and a receive block"
+    },
+
+    "account": {
+      "@id": "nano:account",
+      "@type": "@id",
+      "rdfs:comment": "A Nano account address (nano_ prefix)"
+    },
+
+    "balance": {
+      "@id": "nano:balance",
+      "@type": "xsd:string",
+      "rdfs:comment": "Confirmed balance of an account in raw units"
+    },
+
+    "receivable": {
+      "@id": "nano:receivable",
+      "@type": "xsd:string",
+      "rdfs:comment": "Pending receivable amount in raw units not yet claimed by the account"
+    },
+
+    "frontier": {
+      "@id": "nano:frontier",
+      "@type": "xsd:string",
+      "rdfs:comment": "Hash of the head block (most recent) on an account chain"
+    },
+
+    "representative": {
+      "@id": "nano:representative",
+      "@type": "@id",
+      "rdfs:comment": "Account delegated to vote in consensus on behalf of this account"
+    },
+
+    "weight": {
+      "@id": "nano:votingWeight",
+      "@type": "xsd:string",
+      "rdfs:comment": "Voting weight accumulated from delegators in raw units"
+    },
+
+    "hash": {
+      "@id": "nano:blockHash",
+      "@type": "xsd:string",
+      "rdfs:comment": "64-character uppercase hex Blake2b hash of a Nano block"
+    },
+
+    "previous": {
+      "@id": "nano:previousBlock",
+      "@type": "xsd:string",
+      "rdfs:comment": "Hash of the previous block on this account chain; zeros for open blocks"
+    },
+
+    "link": {
+      "@id": "nano:link",
+      "@type": "xsd:string",
+      "rdfs:comment": "Contextual link field: destination key for sends, send hash for receives"
+    },
+
+    "signature": {
+      "@id": "nano:signature",
+      "@type": "xsd:string",
+      "rdfs:comment": "Ed25519 signature of the block hash"
+    },
+
+    "work": {
+      "@id": "nano:proofOfWork",
+      "@type": "xsd:string",
+      "rdfs:comment": "Proof-of-work nonce satisfying the difficulty threshold"
+    },
+
+    "subtype": {
+      "@id": "nano:blockSubtype",
+      "@type": "xsd:string",
+      "rdfs:comment": "Semantic classification of a state block: send, receive, open, change, or epoch"
+    },
+
+    "amount": {
+      "@id": "nano:amount",
+      "@type": "xsd:string",
+      "rdfs:comment": "Transfer amount in raw units"
+    },
+
+    "seed": {
+      "@id": "nano:walletSeed",
+      "@type": "xsd:string",
+      "rdfs:comment": "Master seed for deterministic key derivation in a wallet"
+    },
+
+    "block_count": {
+      "@id": "nano:blockCount",
+      "@type": "xsd:string",
+      "rdfs:comment": "Total number of blocks in the ledger or on an account chain"
+    },
+
+    "confirmed": {
+      "@id": "nano:confirmed",
+      "@type": "xsd:string",
+      "rdfs:comment": "Whether a block has been confirmed by the network via consensus"
+    },
+
+    "height": {
+      "@id": "nano:blockHeight",
+      "@type": "xsd:string",
+      "rdfs:comment": "Position of a block in the account chain (1-based)"
+    },
+
+    "local_timestamp": {
+      "@id": "nano:localTimestamp",
+      "@type": "xsd:string",
+      "rdfs:comment": "Unix timestamp when the block was first observed by the local node"
+    },
+
+    "action": {
+      "@id": "nano:rpcAction",
+      "@type": "xsd:string",
+      "rdfs:comment": "The RPC command name sent in a Nano JSON-RPC request body"
+    },
+
+    "version": {
+      "@id": "nano:protocolVersion",
+      "@type": "xsd:string",
+      "rdfs:comment": "Nano network protocol version number"
+    },
+
+    "NanoRPCProvider": {
+      "@id": "nano:NanoRPCProvider",
+      "@type": "rdfs:Class",
+      "rdfs:subClassOf": "schema:Service",
+      "rdfs:comment": "A Nano node exposing a JSON-RPC HTTP API"
+    }
+  }
+}

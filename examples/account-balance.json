@@ -1,0 +1,11 @@
+{
+  "request": {
+    "action": "account_balance",
+    "account": "nano_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3"
+  },
+  "response": {
+    "balance": "325586539664609129644855132177",
+    "pending": "2309370929000000000000000000000000",
+    "receivable": "2309370929000000000000000000000000"
+  }
+}

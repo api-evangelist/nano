@@ -1,0 +1,20 @@
+{
+  "nano_to_raw": {
+    "request": {
+      "action": "nano_to_raw",
+      "amount": "1"
+    },
+    "response": {
+      "amount": "1000000000000000000000000000000"
+    }
+  },
+  "raw_to_nano": {
+    "request": {
+      "action": "raw_to_nano",
+      "amount": "1000000000000000000000000000000"
+    },
+    "response": {
+      "amount": "1"
+    }
+  }
+}

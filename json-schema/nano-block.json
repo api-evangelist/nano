@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nano/refs/heads/main/json-schema/nano-block.json",
+  "title": "Nano State Block",
+  "description": "Schema for a Nano universal state block (v1), which is the current block format for all transactions on the Nano network.",
+  "type": "object",
+  "required": ["type", "account", "previous", "representative", "balance", "link", "signature", "work"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["state"],
+      "description": "Block type — always 'state' for universal blocks"
+    },
+    "account": {
+      "type": "string",
+      "pattern": "^nano_[13][13456789abcdefghijkmnopqrstuwxyz]{59}$",
+      "description": "The account that owns this block"
+    },
+    "previous": {
+      "type": "string",
+      "pattern": "^[0-9A-F]{64}$",
+      "description": "Hash of the previous block in this account's chain; all zeros for open blocks"
+    },
+    "representative": {
+      "type": "string",
+      "pattern": "^nano_[13][13456789abcdefghijkmnopqrstuwxyz]{59}$",
+      "description": "The voting representative for this account"
+    },
+    "balance": {
+      "type": "string",
+      "pattern": "^[0-9]+$",
+      "description": "Account balance after this block in raw units"
+    },
+    "link": {
+      "type": "string",
+      "description": "For send blocks: destination account public key; for receive blocks: hash of the send block being received; for change/epoch blocks: related hash or zero"
+    },
+    "link_as_account": {
+      "type": "string",
+      "pattern": "^nano_[13][13456789abcdefghijkmnopqrstuwxyz]{59}$",
+      "description": "Link field interpreted as an account address (send destination)"
+    },
+    "signature": {
+      "type": "string",
+      "pattern": "^[0-9A-F]{128}$",
+      "description": "Ed25519 signature of the block hash, signed by the account's private key"
+    },
+    "work": {
+      "type": "string",
+      "pattern": "^[0-9A-Fa-f]{16}$",
+      "description": "Proof-of-work nonce satisfying the difficulty threshold"
+    },
+    "subtype": {
+      "type": "string",
+      "enum": ["send", "receive", "open", "change", "epoch"],
+      "description": "Semantic subtype of the state block"
+    }
+  },
+  "additionalProperties": false
+}
