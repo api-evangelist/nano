@@ -125,6 +125,8 @@ apis:
       - key: rpcActions
         value: nano_to_raw, raw_to_nano
 common:
+  - type: DomainSecurity
+    url: security/nano-domain-security.yml
   - type: Website
     url: https://nano.org
   - type: Documentation
@@ -141,6 +143,8 @@ common:
     url: https://github.com/nanocurrency
   - type: Contact
     url: mailto:integrations@nano.org
+  - type: Blog
+    url: https://nano.org/en/blog/rss/
 maintainers:
   - FN: API Evangelist
     url: https://apievangelist.com
