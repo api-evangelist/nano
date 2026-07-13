@@ -1,0 +1,13 @@
+{
+  "repo": "nano",
+  "feeds": [
+    {
+      "source": "https://nano.org",
+      "feed_url": "https://nano.org/en/blog/rss/",
+      "title": "Nano Blog",
+      "saved": 0
+    }
+  ],
+  "fetched": "2026-07-11T11:43:46Z",
+  "post_count": 10
+}
