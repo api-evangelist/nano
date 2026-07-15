@@ -125,6 +125,8 @@ apis:
       - key: rpcActions
         value: nano_to_raw, raw_to_nano
 common:
+  - type: AgenticAccess
+    url: agentic-access/nano-agentic-access.yml
   - type: DomainSecurity
     url: security/nano-domain-security.yml
   - type: Website
