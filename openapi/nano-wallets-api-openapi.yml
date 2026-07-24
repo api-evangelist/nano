@@ -1,0 +1,1257 @@
+openapi: 3.0.3
+info:
+  title: Nano RPC Accounts Wallets API
+  description: 'The Nano RPC API is a JSON-RPC HTTP interface for interacting with the Nano network. Nano is a feeless, instant digital currency using a block-lattice architecture where each account maintains its own blockchain. The RPC API supports account queries, block operations, wallet management, node diagnostics, and unit conversions. All requests are POST with a JSON body containing an "action" field identifying the RPC command.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Nano Foundation
+    url: https://nano.org/en/developers
+    email: integrations@nano.org
+  license:
+    name: BSD-2-Clause
+    url: https://opensource.org/licenses/BSD-2-Clause
+  termsOfService: https://nano.org/terms-of-use
+servers:
+- url: http://localhost:7076
+  description: Local Nano node (default RPC port)
+tags:
+- name: Wallets
+  description: Local wallet management for development and testing
+paths:
+  /account_create:
+    post:
+      operationId: account_create
+      summary: Create account in wallet
+      description: Generates a new account in the specified wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_create
+                wallet:
+                  type: string
+                work:
+                  type: boolean
+      responses:
+        '200':
+          description: Created account address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: string
+  /account_list:
+    post:
+      operationId: account_list
+      summary: List wallet accounts
+      description: Returns all accounts stored in the given wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_list
+                wallet:
+                  type: string
+      responses:
+        '200':
+          description: List of account addresses
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accounts:
+                    type: array
+                    items:
+                      type: string
+  /account_move:
+    post:
+      operationId: account_move
+      summary: Move accounts between wallets
+      description: Moves accounts from one wallet to another.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - source
+              - accounts
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_move
+                wallet:
+                  type: string
+                source:
+                  type: string
+                accounts:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Move result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  moved:
+                    type: string
+  /account_remove:
+    post:
+      operationId: account_remove
+      summary: Remove account from wallet
+      description: Removes an account from the wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_remove
+                wallet:
+                  type: string
+                account:
+                  type: string
+      responses:
+        '200':
+          description: Removal result
+          content:
+            application/json:
+              schema:
+                type: object
+  /account_representative_set:
+    post:
+      operationId: account_representative_set
+      summary: Set account representative
+      description: Changes the representative for an account in a wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - account
+              - representative
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_representative_set
+                wallet:
+                  type: string
+                account:
+                  type: string
+                representative:
+                  type: string
+                work:
+                  type: string
+      responses:
+        '200':
+          description: Block hash for the change block
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  block:
+                    type: string
+  /accounts_create:
+    post:
+      operationId: accounts_create
+      summary: Create multiple wallet accounts
+      description: Batch-creates multiple accounts in the given wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - count
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - accounts_create
+                wallet:
+                  type: string
+                count:
+                  type: integer
+                work:
+                  type: boolean
+      responses:
+        '200':
+          description: Created account addresses
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accounts:
+                    type: array
+                    items:
+                      type: string
+  /password_change:
+    post:
+      operationId: password_change
+      summary: Change wallet password
+      description: Sets a new password for the given wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - password
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - password_change
+                wallet:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Password change result
+          content:
+            application/json:
+              schema:
+                type: object
+  /password_enter:
+    post:
+      operationId: password_enter
+      summary: Enter wallet password
+      description: Unlocks the wallet with the provided password.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - password
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - password_enter
+                wallet:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Password validation result
+          content:
+            application/json:
+              schema:
+                type: object
+  /password_valid:
+    post:
+      operationId: password_valid
+      summary: Check if wallet password is valid
+      description: Checks whether the current wallet password is valid (wallet is unlocked).
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - password_valid
+                wallet:
+                  type: string
+      responses:
+        '200':
+          description: Password validity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+  /receive:
+    post:
+      operationId: receive
+      summary: Receive a block
+      description: Creates a receive block for a pending transaction.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - account
+              - block
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - receive
+                wallet:
+                  type: string
+                account:
+                  type: string
+                block:
+                  type: string
+                work:
+                  type: string
+      responses:
+        '200':
+          description: Receive block hash
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  block:
+                    type: string
+  /receive_minimum:
+    post:
+      operationId: receive_minimum
+      summary: Get receive minimum
+      description: Returns the minimum receive amount configured for the node.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - receive_minimum
+      responses:
+        '200':
+          description: Minimum receive amount in raw units
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  receive_minimum:
+                    type: string
+  /receive_minimum_set:
+    post:
+      operationId: receive_minimum_set
+      summary: Set receive minimum
+      description: Sets the minimum receive amount for the node.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - amount
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - receive_minimum_set
+                amount:
+                  type: string
+      responses:
+        '200':
+          description: Set result
+          content:
+            application/json:
+              schema:
+                type: object
+  /search_receivable:
+    post:
+      operationId: search_receivable
+      summary: Search for receivable blocks
+      description: Searches for pending receivable blocks for all accounts in the wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - search_receivable
+                wallet:
+                  type: string
+      responses:
+        '200':
+          description: Search started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  started:
+                    type: string
+  /search_receivable_all:
+    post:
+      operationId: search_receivable_all
+      summary: Search receivable blocks for all wallets
+      description: Searches for pending receivable blocks across all wallets on the node.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - search_receivable_all
+      responses:
+        '200':
+          description: Search started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  started:
+                    type: string
+  /send:
+    post:
+      operationId: send
+      summary: Send Nano
+      description: Creates and publishes a send block to transfer Nano to a destination.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - source
+              - destination
+              - amount
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - send
+                wallet:
+                  type: string
+                source:
+                  type: string
+                destination:
+                  type: string
+                amount:
+                  type: string
+                  description: Amount in raw units
+                work:
+                  type: string
+            example:
+              action: send
+              wallet: 000D1BAEC8EC208142C99059B393051BAC8380F9B5A2E6B2489A277D81789F3F
+              source: nano_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3
+              destination: nano_3qb6o6i1tkzr6jwr5s7eehfxwg9x6eemitdinbpi7u8bjjwsgqfj4wzser3x
+              amount: '1000000000000000000000000'
+      responses:
+        '200':
+          description: Send block hash
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  block:
+                    type: string
+  /wallet_add:
+    post:
+      operationId: wallet_add
+      summary: Add private key to wallet
+      description: Adds an existing private key to a wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - key
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_add
+                wallet:
+                  type: string
+                key:
+                  type: string
+                work:
+                  type: boolean
+      responses:
+        '200':
+          description: Account for the added key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: string
+  /wallet_add_watch:
+    post:
+      operationId: wallet_add_watch
+      summary: Add watch-only accounts to wallet
+      description: Adds accounts to watch in the wallet without private keys.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - accounts
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_add_watch
+                wallet:
+                  type: string
+                accounts:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Watch accounts added
+          content:
+            application/json:
+              schema:
+                type: object
+  /wallet_balances:
+    post:
+      operationId: wallet_balances
+      summary: Get balances for all wallet accounts
+      description: Returns balances for all accounts in the given wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_balances
+                wallet:
+                  type: string
+                threshold:
+                  type: string
+      responses:
+        '200':
+          description: Balances per account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  balances:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/AccountBalanceResponse'
+  /wallet_change_seed:
+    post:
+      operationId: wallet_change_seed
+      summary: Change wallet seed
+      description: Replaces the wallet seed with a new one.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - seed
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_change_seed
+                wallet:
+                  type: string
+                seed:
+                  type: string
+                count:
+                  type: integer
+      responses:
+        '200':
+          description: Seed change result
+          content:
+            application/json:
+              schema:
+                type: object
+  /wallet_contains:
+    post:
+      operationId: wallet_contains
+      summary: Check if wallet contains account
+      description: Returns whether the wallet contains the given account.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_contains
+                wallet:
+                  type: string
+                account:
+                  type: string
+      responses:
+        '200':
+          description: Containment result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exists:
+                    type: boolean
+  /wallet_create:
+    post:
+      operationId: wallet_create
+      summary: Create new wallet
+      description: Creates a new wallet and returns its identifier.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_create
+      responses:
+        '200':
+          description: New wallet identifier
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wallet:
+                    type: string
+  /wallet_destroy:
+    post:
+      operationId: wallet_destroy
+      summary: Destroy a wallet
+      description: Permanently deletes a wallet and all its accounts.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_destroy
+                wallet:
+                  type: string
+      responses:
+        '200':
+          description: Destruction result
+          content:
+            application/json:
+              schema:
+                type: object
+  /wallet_export:
+    post:
+      operationId: wallet_export
+      summary: Export wallet
+      description: Exports wallet data as a JSON string containing the seed.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_export
+                wallet:
+                  type: string
+      responses:
+        '200':
+          description: Exported wallet JSON
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: string
+  /wallet_frontiers:
+    post:
+      operationId: wallet_frontiers
+      summary: Get frontiers for wallet accounts
+      description: Returns the frontier block for each account in the wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_frontiers
+                wallet:
+                  type: string
+      responses:
+        '200':
+          description: Frontiers per account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  frontiers:
+                    type: object
+                    additionalProperties:
+                      type: string
+  /wallet_history:
+    post:
+      operationId: wallet_history
+      summary: Get wallet transaction history
+      description: Returns all transactions for accounts in the wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_history
+                wallet:
+                  type: string
+                modified_since:
+                  type: integer
+      responses:
+        '200':
+          description: Wallet transaction history
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  history:
+                    type: array
+                    items:
+                      type: object
+  /wallet_info:
+    post:
+      operationId: wallet_info
+      summary: Get wallet information
+      description: Returns metadata about the given wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_info
+                wallet:
+                  type: string
+      responses:
+        '200':
+          description: Wallet metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deterministic:
+                    type: string
+                  block_count:
+                    type: string
+                  accounts_count:
+                    type: string
+                  min_version:
+                    type: string
+  /wallet_ledger:
+    post:
+      operationId: wallet_ledger
+      summary: Get ledger for wallet accounts
+      description: Returns ledger information for all accounts in the wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_ledger
+                wallet:
+                  type: string
+                representative:
+                  type: boolean
+                weight:
+                  type: boolean
+                receivable:
+                  type: boolean
+                sorting:
+                  type: boolean
+                threshold:
+                  type: string
+      responses:
+        '200':
+          description: Ledger entries for wallet accounts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accounts:
+                    type: object
+                    additionalProperties:
+                      type: object
+  /wallet_lock:
+    post:
+      operationId: wallet_lock
+      summary: Lock a wallet
+      description: Locks the specified wallet, requiring password re-entry.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_lock
+                wallet:
+                  type: string
+      responses:
+        '200':
+          description: Lock result
+          content:
+            application/json:
+              schema:
+                type: object
+  /wallet_locked:
+    post:
+      operationId: wallet_locked
+      summary: Check if wallet is locked
+      description: Returns whether the wallet is currently locked.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_locked
+                wallet:
+                  type: string
+      responses:
+        '200':
+          description: Lock status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  locked:
+                    type: boolean
+  /wallet_receivable:
+    post:
+      operationId: wallet_receivable
+      summary: Get receivable blocks for wallet
+      description: Returns pending receivable blocks for all wallet accounts.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_receivable
+                wallet:
+                  type: string
+                threshold:
+                  type: string
+                source:
+                  type: boolean
+                include_active:
+                  type: boolean
+                sorting:
+                  type: boolean
+                count:
+                  type: integer
+      responses:
+        '200':
+          description: Receivable blocks per account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  blocks:
+                    type: object
+                    additionalProperties:
+                      type: object
+  /wallet_representative:
+    post:
+      operationId: wallet_representative
+      summary: Get wallet representative
+      description: Returns the default representative for the wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_representative
+                wallet:
+                  type: string
+      responses:
+        '200':
+          description: Wallet representative
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  representative:
+                    type: string
+  /wallet_representative_set:
+    post:
+      operationId: wallet_representative_set
+      summary: Set wallet representative
+      description: Sets the default representative for the wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - representative
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_representative_set
+                wallet:
+                  type: string
+                representative:
+                  type: string
+                work:
+                  type: boolean
+      responses:
+        '200':
+          description: Set result
+          content:
+            application/json:
+              schema:
+                type: object
+  /wallet_republish:
+    post:
+      operationId: wallet_republish
+      summary: Republish wallet blocks
+      description: Republishes blocks for all accounts in the wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_republish
+                wallet:
+                  type: string
+                count:
+                  type: integer
+      responses:
+        '200':
+          description: Republished block hashes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  blocks:
+                    type: array
+                    items:
+                      type: string
+  /wallet_work_get:
+    post:
+      operationId: wallet_work_get
+      summary: Get work for wallet account
+      description: Returns the cached proof-of-work for an account in the wallet.
+      tags:
+      - Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - wallet
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - wallet_work_get
+                wallet:
+                  type: string
+                account:
+                  type: string
+      responses:
+        '200':
+          description: Cached work value
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  work:
+                    type: string
+components:
+  schemas:
+    AccountBalanceResponse:
+      type: object
+      properties:
+        balance:
+          type: string
+          description: Confirmed balance in raw units
+        pending:
+          type: string
+          description: Pending (receivable) balance in raw units (deprecated alias)
+        receivable:
+          type: string
+          description: Pending (receivable) balance in raw units
+externalDocs:
+  description: Nano RPC Protocol Documentation
+  url: https://docs.nano.org/commands/rpc-protocol/

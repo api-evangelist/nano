@@ -1,0 +1,173 @@
+openapi: 3.0.3
+info:
+  title: Nano RPC Accounts Ledger API
+  description: 'The Nano RPC API is a JSON-RPC HTTP interface for interacting with the Nano network. Nano is a feeless, instant digital currency using a block-lattice architecture where each account maintains its own blockchain. The RPC API supports account queries, block operations, wallet management, node diagnostics, and unit conversions. All requests are POST with a JSON body containing an "action" field identifying the RPC command.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Nano Foundation
+    url: https://nano.org/en/developers
+    email: integrations@nano.org
+  license:
+    name: BSD-2-Clause
+    url: https://opensource.org/licenses/BSD-2-Clause
+  termsOfService: https://nano.org/terms-of-use
+servers:
+- url: http://localhost:7076
+  description: Local Nano node (default RPC port)
+tags:
+- name: Ledger
+  description: Ledger-level queries for supply, frontiers, and account data
+paths:
+  /available_supply:
+    post:
+      operationId: available_supply
+      summary: Get available supply
+      description: Returns the amount of Nano available in circulation.
+      tags:
+      - Ledger
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - available_supply
+      responses:
+        '200':
+          description: Available supply in raw units
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  available:
+                    type: string
+  /frontier_count:
+    post:
+      operationId: frontier_count
+      summary: Get frontier count
+      description: Returns the total number of account frontiers in the ledger.
+      tags:
+      - Ledger
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - frontier_count
+      responses:
+        '200':
+          description: Frontier count
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: string
+  /frontiers:
+    post:
+      operationId: frontiers
+      summary: Get all frontiers
+      description: Returns frontier hashes starting from the given account, up to count.
+      tags:
+      - Ledger
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              - count
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - frontiers
+                account:
+                  type: string
+                count:
+                  type: integer
+      responses:
+        '200':
+          description: Frontier hashes per account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  frontiers:
+                    type: object
+                    additionalProperties:
+                      type: string
+  /ledger:
+    post:
+      operationId: ledger
+      summary: Query ledger entries
+      description: Returns a list of account frontier information from the ledger.
+      tags:
+      - Ledger
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              - count
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - ledger
+                account:
+                  type: string
+                count:
+                  type: integer
+                representative:
+                  type: boolean
+                weight:
+                  type: boolean
+                receivable:
+                  type: boolean
+                modified_since:
+                  type: integer
+                sorting:
+                  type: boolean
+                threshold:
+                  type: string
+      responses:
+        '200':
+          description: Ledger account entries
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accounts:
+                    type: object
+                    additionalProperties:
+                      type: object
+externalDocs:
+  description: Nano RPC Protocol Documentation
+  url: https://docs.nano.org/commands/rpc-protocol/

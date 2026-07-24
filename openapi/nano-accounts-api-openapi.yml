@@ -1,0 +1,677 @@
+openapi: 3.0.3
+info:
+  title: Nano RPC Accounts API
+  description: 'The Nano RPC API is a JSON-RPC HTTP interface for interacting with the Nano network. Nano is a feeless, instant digital currency using a block-lattice architecture where each account maintains its own blockchain. The RPC API supports account queries, block operations, wallet management, node diagnostics, and unit conversions. All requests are POST with a JSON body containing an "action" field identifying the RPC command.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Nano Foundation
+    url: https://nano.org/en/developers
+    email: integrations@nano.org
+  license:
+    name: BSD-2-Clause
+    url: https://opensource.org/licenses/BSD-2-Clause
+  termsOfService: https://nano.org/terms-of-use
+servers:
+- url: http://localhost:7076
+  description: Local Nano node (default RPC port)
+tags:
+- name: Accounts
+  description: Account balance, history, representative, and frontier queries
+paths:
+  /account_balance:
+    post:
+      operationId: account_balance
+      summary: Get account balance
+      description: Returns the balance for an account in raw units.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_balance
+                account:
+                  type: string
+                  description: Nano account address (nano_ prefix)
+                include_only_confirmed:
+                  type: boolean
+                  description: Only include confirmed blocks in balance
+            example:
+              action: account_balance
+              account: nano_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3
+      responses:
+        '200':
+          description: Account balance in raw units
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountBalanceResponse'
+  /account_block_count:
+    post:
+      operationId: account_block_count
+      summary: Get account block count
+      description: Returns the number of blocks in the account's blockchain.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_block_count
+                account:
+                  type: string
+            example:
+              action: account_block_count
+              account: nano_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3
+      responses:
+        '200':
+          description: Block count for the account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  block_count:
+                    type: string
+  /account_get:
+    post:
+      operationId: account_get
+      summary: Get account from public key
+      description: Returns the account address corresponding to a public key.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - key
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_get
+                key:
+                  type: string
+                  description: Public key (hex)
+      responses:
+        '200':
+          description: Account address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: string
+  /account_history:
+    post:
+      operationId: account_history
+      summary: Get account history
+      description: Returns a list of blocks for an account with transaction details.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              - count
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_history
+                account:
+                  type: string
+                count:
+                  type: integer
+                  description: Number of blocks to return
+                raw:
+                  type: boolean
+                head:
+                  type: string
+                  description: Block hash to start from
+                offset:
+                  type: integer
+                reverse:
+                  type: boolean
+                include_linked_account:
+                  type: boolean
+                account_filter:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Account history
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountHistoryResponse'
+  /account_info:
+    post:
+      operationId: account_info
+      summary: Get account info
+      description: Returns detailed information about an account's blockchain state.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_info
+                account:
+                  type: string
+                representative:
+                  type: boolean
+                weight:
+                  type: boolean
+                receivable:
+                  type: boolean
+                include_confirmed:
+                  type: boolean
+            example:
+              action: account_info
+              account: nano_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3
+              representative: true
+              weight: true
+      responses:
+        '200':
+          description: Account information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInfoResponse'
+  /account_key:
+    post:
+      operationId: account_key
+      summary: Get public key for account
+      description: Returns the public key corresponding to a Nano account address.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_key
+                account:
+                  type: string
+      responses:
+        '200':
+          description: Public key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key:
+                    type: string
+  /account_representative:
+    post:
+      operationId: account_representative
+      summary: Get account representative
+      description: Returns the representative for an account.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_representative
+                account:
+                  type: string
+      responses:
+        '200':
+          description: Account representative
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  representative:
+                    type: string
+  /account_weight:
+    post:
+      operationId: account_weight
+      summary: Get account voting weight
+      description: Returns the voting weight for an account.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - account_weight
+                account:
+                  type: string
+      responses:
+        '200':
+          description: Voting weight
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  weight:
+                    type: string
+  /accounts_balances:
+    post:
+      operationId: accounts_balances
+      summary: Get balances for multiple accounts
+      description: Returns balances for a list of Nano accounts.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - accounts
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - accounts_balances
+                accounts:
+                  type: array
+                  items:
+                    type: string
+                include_only_confirmed:
+                  type: boolean
+      responses:
+        '200':
+          description: Balances for each account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  balances:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/AccountBalanceResponse'
+                  errors:
+                    type: object
+                    additionalProperties:
+                      type: string
+  /accounts_frontiers:
+    post:
+      operationId: accounts_frontiers
+      summary: Get frontiers for multiple accounts
+      description: Returns the frontier (head block hash) for each account.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - accounts
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - accounts_frontiers
+                accounts:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Frontier hashes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  frontiers:
+                    type: object
+                    additionalProperties:
+                      type: string
+                  errors:
+                    type: object
+                    additionalProperties:
+                      type: string
+  /accounts_receivable:
+    post:
+      operationId: accounts_receivable
+      summary: Get receivable blocks for multiple accounts
+      description: Returns pending/receivable blocks for a list of accounts.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - accounts
+              - count
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - accounts_receivable
+                accounts:
+                  type: array
+                  items:
+                    type: string
+                count:
+                  type: integer
+                threshold:
+                  type: string
+                source:
+                  type: boolean
+                include_active:
+                  type: boolean
+                sorting:
+                  type: boolean
+                include_only_confirmed:
+                  type: boolean
+      responses:
+        '200':
+          description: Receivable blocks per account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  blocks:
+                    type: object
+                    additionalProperties:
+                      type: object
+  /accounts_representatives:
+    post:
+      operationId: accounts_representatives
+      summary: Get representatives for multiple accounts
+      description: Returns the representative for each of the given accounts.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - accounts
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - accounts_representatives
+                accounts:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Representatives per account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  representatives:
+                    type: object
+                    additionalProperties:
+                      type: string
+                  errors:
+                    type: object
+                    additionalProperties:
+                      type: string
+  /receivable:
+    post:
+      operationId: receivable
+      summary: Get receivable blocks for account
+      description: Returns pending receivable blocks for a single account.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - receivable
+                account:
+                  type: string
+                count:
+                  type: integer
+                threshold:
+                  type: string
+                source:
+                  type: boolean
+      responses:
+        '200':
+          description: Receivable block hashes or amounts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  blocks:
+                    oneOf:
+                    - type: array
+                      items:
+                        type: string
+                    - type: object
+  /receivable_exists:
+    post:
+      operationId: receivable_exists
+      summary: Check if receivable block exists
+      description: Checks whether a specific block hash is receivable for an account.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - hash
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - receivable_exists
+                hash:
+                  type: string
+      responses:
+        '200':
+          description: Existence check result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exists:
+                    type: string
+  /validate_account_number:
+    post:
+      operationId: validate_account_number
+      summary: Validate account number
+      description: Checks whether the given account address is valid.
+      tags:
+      - Accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - validate_account_number
+                account:
+                  type: string
+      responses:
+        '200':
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: string
+                    enum:
+                    - '0'
+                    - '1'
+components:
+  schemas:
+    AccountBalanceResponse:
+      type: object
+      properties:
+        balance:
+          type: string
+          description: Confirmed balance in raw units
+        pending:
+          type: string
+          description: Pending (receivable) balance in raw units (deprecated alias)
+        receivable:
+          type: string
+          description: Pending (receivable) balance in raw units
+    AccountHistoryResponse:
+      type: object
+      properties:
+        account:
+          type: string
+        history:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - send
+                - receive
+                - change
+                - epoch
+              account:
+                type: string
+              amount:
+                type: string
+              hash:
+                type: string
+              height:
+                type: string
+              local_timestamp:
+                type: string
+        previous:
+          type: string
+    AccountInfoResponse:
+      type: object
+      properties:
+        frontier:
+          type: string
+          description: Hash of the head block
+        open_block:
+          type: string
+          description: Hash of the account open block
+        representative_block:
+          type: string
+        balance:
+          type: string
+          description: Confirmed balance in raw units
+        modified_timestamp:
+          type: string
+        block_count:
+          type: string
+        representative:
+          type: string
+        weight:
+          type: string
+        receivable:
+          type: string
+externalDocs:
+  description: Nano RPC Protocol Documentation
+  url: https://docs.nano.org/commands/rpc-protocol/

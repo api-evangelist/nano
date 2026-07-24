@@ -1,0 +1,130 @@
+openapi: 3.0.3
+info:
+  title: Nano RPC Accounts Keys API
+  description: 'The Nano RPC API is a JSON-RPC HTTP interface for interacting with the Nano network. Nano is a feeless, instant digital currency using a block-lattice architecture where each account maintains its own blockchain. The RPC API supports account queries, block operations, wallet management, node diagnostics, and unit conversions. All requests are POST with a JSON body containing an "action" field identifying the RPC command.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Nano Foundation
+    url: https://nano.org/en/developers
+    email: integrations@nano.org
+  license:
+    name: BSD-2-Clause
+    url: https://opensource.org/licenses/BSD-2-Clause
+  termsOfService: https://nano.org/terms-of-use
+servers:
+- url: http://localhost:7076
+  description: Local Nano node (default RPC port)
+tags:
+- name: Keys
+  description: Cryptographic key generation and derivation
+paths:
+  /deterministic_key:
+    post:
+      operationId: deterministic_key
+      summary: Generate deterministic key pair
+      description: Derives a key pair from a seed and index using BIP-like derivation.
+      tags:
+      - Keys
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - seed
+              - index
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - deterministic_key
+                seed:
+                  type: string
+                index:
+                  type: string
+      responses:
+        '200':
+          description: Key pair and account address
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyPairResponse'
+  /key_create:
+    post:
+      operationId: key_create
+      summary: Create new key pair
+      description: Generates a new random private/public key pair and account address.
+      tags:
+      - Keys
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - key_create
+      responses:
+        '200':
+          description: New key pair and account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyPairResponse'
+  /key_expand:
+    post:
+      operationId: key_expand
+      summary: Expand private key
+      description: Derives the public key and account from a given private key.
+      tags:
+      - Keys
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - key
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - key_expand
+                key:
+                  type: string
+                  description: Private key (hex)
+      responses:
+        '200':
+          description: Public key and account address
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyPairResponse'
+components:
+  schemas:
+    KeyPairResponse:
+      type: object
+      properties:
+        private:
+          type: string
+          description: Private key (hex)
+        public:
+          type: string
+          description: Public key (hex)
+        account:
+          type: string
+          description: Nano account address
+externalDocs:
+  description: Nano RPC Protocol Documentation
+  url: https://docs.nano.org/commands/rpc-protocol/

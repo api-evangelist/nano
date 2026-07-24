@@ -1,0 +1,804 @@
+openapi: 3.0.3
+info:
+  title: Nano RPC Accounts Node API
+  description: 'The Nano RPC API is a JSON-RPC HTTP interface for interacting with the Nano network. Nano is a feeless, instant digital currency using a block-lattice architecture where each account maintains its own blockchain. The RPC API supports account queries, block operations, wallet management, node diagnostics, and unit conversions. All requests are POST with a JSON body containing an "action" field identifying the RPC command.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Nano Foundation
+    url: https://nano.org/en/developers
+    email: integrations@nano.org
+  license:
+    name: BSD-2-Clause
+    url: https://opensource.org/licenses/BSD-2-Clause
+  termsOfService: https://nano.org/terms-of-use
+servers:
+- url: http://localhost:7076
+  description: Local Nano node (default RPC port)
+tags:
+- name: Node
+  description: Node diagnostics, bootstrapping, peers, and confirmation management
+paths:
+  /bootstrap:
+    post:
+      operationId: bootstrap
+      summary: Bootstrap from peer
+      description: Initiates a bootstrap sync from the specified peer node.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - address
+              - port
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - bootstrap
+                address:
+                  type: string
+                port:
+                  type: string
+                bypass_frontier_confirmation:
+                  type: boolean
+                id:
+                  type: string
+      responses:
+        '200':
+          description: Bootstrap started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: string
+  /bootstrap_any:
+    post:
+      operationId: bootstrap_any
+      summary: Bootstrap from any peer
+      description: Initiates a bootstrap sync from any available peer.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - bootstrap_any
+                force:
+                  type: boolean
+                id:
+                  type: string
+                account:
+                  type: string
+      responses:
+        '200':
+          description: Bootstrap started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: string
+  /bootstrap_lazy:
+    post:
+      operationId: bootstrap_lazy
+      summary: Lazy bootstrap from hash
+      description: Initiates lazy (hash-based) bootstrap starting from a specific block.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - hash
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - bootstrap_lazy
+                hash:
+                  type: string
+                force:
+                  type: boolean
+                id:
+                  type: string
+      responses:
+        '200':
+          description: Bootstrap status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  started:
+                    type: string
+                  key_inserted:
+                    type: string
+  /bootstrap_status:
+    post:
+      operationId: bootstrap_status
+      summary: Get bootstrap status
+      description: Returns current bootstrap attempt status and connection counts.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - bootstrap_status
+      responses:
+        '200':
+          description: Bootstrap status information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  bootstrap_threads:
+                    type: string
+                  running_attempts_count:
+                    type: string
+                  total_attempts_count:
+                    type: string
+                  connections:
+                    type: object
+                  attempts:
+                    type: array
+                    items:
+                      type: object
+  /confirmation_active:
+    post:
+      operationId: confirmation_active
+      summary: Get active confirmations
+      description: Returns a list of currently active confirmation elections.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - confirmation_active
+                announcements:
+                  type: integer
+      responses:
+        '200':
+          description: Active confirmations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  confirmations:
+                    type: array
+                    items:
+                      type: string
+                  unconfirmed:
+                    type: string
+                  confirmed:
+                    type: string
+  /confirmation_history:
+    post:
+      operationId: confirmation_history
+      summary: Get confirmation history
+      description: Returns historical data about completed confirmation elections.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - confirmation_history
+                hash:
+                  type: string
+      responses:
+        '200':
+          description: Confirmation history records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  confirmation_stats:
+                    type: object
+                  confirmations:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        hash:
+                          type: string
+                        duration:
+                          type: string
+                        time:
+                          type: string
+                        tally:
+                          type: string
+                        blocks:
+                          type: string
+                        voters:
+                          type: string
+  /confirmation_info:
+    post:
+      operationId: confirmation_info
+      summary: Get confirmation info for root
+      description: Returns information about the election for a specific block root.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - root
+              - json_block
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - confirmation_info
+                root:
+                  type: string
+                json_block:
+                  type: string
+                contents:
+                  type: boolean
+                representatives:
+                  type: boolean
+      responses:
+        '200':
+          description: Confirmation election details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  announcements:
+                    type: string
+                  voters:
+                    type: string
+                  last_winner:
+                    type: string
+                  total_tally:
+                    type: string
+                  blocks:
+                    type: object
+  /confirmation_quorum:
+    post:
+      operationId: confirmation_quorum
+      summary: Get confirmation quorum info
+      description: Returns quorum and online stake information for confirmation.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - confirmation_quorum
+                peer_details:
+                  type: boolean
+      responses:
+        '200':
+          description: Quorum information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  quorum_delta:
+                    type: string
+                  online_weight_quorum_percent:
+                    type: string
+                  online_weight_minimum:
+                    type: string
+                  online_stake_total:
+                    type: string
+                  peers_stake_total:
+                    type: string
+                  trended_stake_total:
+                    type: string
+  /delegators:
+    post:
+      operationId: delegators
+      summary: Get delegators for representative
+      description: Returns all accounts delegating voting weight to the given representative.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - delegators
+                account:
+                  type: string
+                threshold:
+                  type: string
+                count:
+                  type: integer
+                start:
+                  type: string
+      responses:
+        '200':
+          description: Delegators and their balances
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  delegators:
+                    type: object
+                    additionalProperties:
+                      type: string
+  /delegators_count:
+    post:
+      operationId: delegators_count
+      summary: Get delegator count for representative
+      description: Returns the number of accounts delegating to a representative.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - account
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - delegators_count
+                account:
+                  type: string
+      responses:
+        '200':
+          description: Delegator count
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: string
+  /election_statistics:
+    post:
+      operationId: election_statistics
+      summary: Get election statistics
+      description: Returns statistics about the active elections subsystem (v27.0+).
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - election_statistics
+      responses:
+        '200':
+          description: Election statistics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  normal:
+                    type: string
+                  priority:
+                    type: string
+                  hinted:
+                    type: string
+                  optimistic:
+                    type: string
+                  total:
+                    type: string
+                  aec_utilization_percentage:
+                    type: string
+                  max_election_age:
+                    type: string
+                  average_election_age:
+                    type: string
+  /keepalive:
+    post:
+      operationId: keepalive
+      summary: Send keepalive
+      description: Sends a keepalive packet to the specified peer.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              - address
+              - port
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - keepalive
+                address:
+                  type: string
+                port:
+                  type: string
+      responses:
+        '200':
+          description: Keepalive acknowledged
+          content:
+            application/json:
+              schema:
+                type: object
+  /node_id:
+    post:
+      operationId: node_id
+      summary: Get node identity
+      description: Returns the public and private node identity keys.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - node_id
+      responses:
+        '200':
+          description: Node identity information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  private:
+                    type: string
+                  public:
+                    type: string
+                  node_id:
+                    type: string
+  /peers:
+    post:
+      operationId: peers
+      summary: Get connected peers
+      description: Returns a list of connected peers and their protocol versions.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - peers
+                peer_details:
+                  type: boolean
+      responses:
+        '200':
+          description: Connected peers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  peers:
+                    type: object
+                    additionalProperties:
+                      oneOf:
+                      - type: string
+                      - type: object
+  /populate_backlog:
+    post:
+      operationId: populate_backlog
+      summary: Populate election backlog
+      description: Adds unconfirmed blocks to the confirmation backlog queue.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - populate_backlog
+      responses:
+        '200':
+          description: Backlog populated
+          content:
+            application/json:
+              schema:
+                type: object
+  /representatives:
+    post:
+      operationId: representatives
+      summary: Get all representatives
+      description: Returns all representatives and their voting weights.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - representatives
+                count:
+                  type: integer
+                sorting:
+                  type: boolean
+      responses:
+        '200':
+          description: Representatives and weights
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  representatives:
+                    type: object
+                    additionalProperties:
+                      type: string
+  /representatives_online:
+    post:
+      operationId: representatives_online
+      summary: Get online representatives
+      description: Returns representatives that have recently voted.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - representatives_online
+                weight:
+                  type: boolean
+      responses:
+        '200':
+          description: Online representatives
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  representatives:
+                    type: array
+                    items:
+                      type: string
+  /stats:
+    post:
+      operationId: stats
+      summary: Get node statistics
+      description: Returns internal node statistics by category.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - stats
+                type:
+                  type: string
+                  enum:
+                  - counters
+                  - samples
+                  - objects
+                  - database
+      responses:
+        '200':
+          description: Node statistics
+          content:
+            application/json:
+              schema:
+                type: object
+  /telemetry:
+    post:
+      operationId: telemetry
+      summary: Get network telemetry
+      description: Returns telemetry data from connected peers.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - telemetry
+                raw:
+                  type: boolean
+      responses:
+        '200':
+          description: Peer telemetry data
+          content:
+            application/json:
+              schema:
+                type: object
+  /uptime:
+    post:
+      operationId: uptime
+      summary: Get node uptime
+      description: Returns how many seconds the node has been running.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - uptime
+      responses:
+        '200':
+          description: Node uptime in seconds
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uptime:
+                    type: string
+  /version:
+    post:
+      operationId: version
+      summary: Get node version
+      description: Returns the RPC, store, and network protocol versions of the node.
+      tags:
+      - Node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - action
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - version
+      responses:
+        '200':
+          description: Version information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rpc_version:
+                    type: string
+                  store_version:
+                    type: string
+                  protocol_version:
+                    type: string
+                  node_vendor:
+                    type: string
+externalDocs:
+  description: Nano RPC Protocol Documentation
+  url: https://docs.nano.org/commands/rpc-protocol/
