@@ -1,0 +1,33 @@
+{
+  "provider": "nano",
+  "sources": [
+    "nano-accounts-api-openapi.yml",
+    "nano-blocks-api-openapi.yml",
+    "nano-keys-api-openapi.yml",
+    "nano-ledger-api-openapi.yml",
+    "nano-node-api-openapi.yml",
+    "nano-unit-conversion-api-openapi.yml",
+    "nano-wallets-api-openapi.yml",
+    "nano-work-api-openapi.yml",
+    "openapi.yml"
+  ],
+  "outputs": [
+    "nano-accounts-api-openapi.yml",
+    "nano-blocks-api-openapi.yml",
+    "nano-keys-api-openapi.yml",
+    "nano-ledger-api-openapi.yml",
+    "nano-node-api-openapi.yml",
+    "nano-unit-conversion-api-openapi.yml",
+    "nano-wallets-api-openapi.yml",
+    "nano-work-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi.yml"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "discovered stray spec: openapi.yml"
+  ],
+  "skipped": []
+}
