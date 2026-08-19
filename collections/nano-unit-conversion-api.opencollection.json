@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nano RPC Accounts Unit Conversion API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Unit Conversion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Convert Nano to raw units",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/nano_to_raw",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Converts an amount from Nano denomination to raw units (10^30 raw = 1 Nano)."
+        },
+        {
+          "info": {
+            "name": "Convert raw units to Nano",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/raw_to_nano",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Converts an amount from raw units to Nano denomination."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

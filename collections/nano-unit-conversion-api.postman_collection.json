@@ -1,0 +1,214 @@
+{
+  "item": [
+    {
+      "id": "1385d42f-0c42-4187-a891-a0a5395aacc0",
+      "name": "Unit Conversion",
+      "description": {
+        "content": "Conversion between Nano and raw unit denominations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90c1a5dc-42c2-47d5-8d3d-a0294b1221cc",
+          "name": "Convert Nano to raw units",
+          "request": {
+            "name": "Convert Nano to raw units",
+            "description": {
+              "content": "Converts an amount from Nano denomination to raw units (10^30 raw = 1 Nano).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nano_to_raw"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"amount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f5224855-fb95-4c10-81c6-cc953badae66",
+              "name": "Equivalent amount in raw units",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nano_to_raw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"nano_to_raw\",\n  \"amount\": \"1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": \"1000000000000000000000000000000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c26f5e75-9d2c-491e-9d2f-506f4d7a62c6",
+          "name": "Convert raw units to Nano",
+          "request": {
+            "name": "Convert raw units to Nano",
+            "description": {
+              "content": "Converts an amount from raw units to Nano denomination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "raw_to_nano"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"amount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c90459b1-50f4-4bb7-9041-d5f8006cbc80",
+              "name": "Equivalent amount in Nano",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "raw_to_nano"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"raw_to_nano\",\n  \"amount\": \"1000000000000000000000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": \"1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:7076",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "93573049-9d45-4e3e-9cf5-6d880facb972",
+    "name": "Nano RPC Accounts Unit Conversion API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Nano RPC API is a JSON-RPC HTTP interface for interacting with the Nano network. Nano is a feeless, instant digital currency using a block-lattice architecture where each account maintains its own blockchain. The RPC API supports account queries, block operations, wallet management, node diagnostics, and unit conversions. All requests are POST with a JSON body containing an \"action\" field identifying the RPC command.\n\n\nContact Support:\n Name: Nano Foundation\n Email: integrations@nano.org",
+      "type": "text/plain"
+    }
+  }
+}

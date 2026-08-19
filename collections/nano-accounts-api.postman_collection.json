@@ -1,0 +1,1397 @@
+{
+  "item": [
+    {
+      "id": "a1998d29-97cf-4340-ab12-3dfe26e17a46",
+      "name": "Accounts",
+      "description": {
+        "content": "Account balance, history, representative, and frontier queries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28552017-1964-4dbd-9fae-7c4548beeaf7",
+          "name": "Get account balance",
+          "request": {
+            "name": "Get account balance",
+            "description": {
+              "content": "Returns the balance for an account in raw units.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account_balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\",\n  \"include_only_confirmed\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "37a691a5-a7ab-4563-b066-f7fd2221f157",
+              "name": "Account balance in raw units",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account_balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"account_balance\",\n  \"account\": \"nano_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"balance\": \"string\",\n  \"pending\": \"string\",\n  \"receivable\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66ec29a2-1a2d-4010-b6e3-3853a177f075",
+          "name": "Get account block count",
+          "request": {
+            "name": "Get account block count",
+            "description": {
+              "content": "Returns the number of blocks in the account's blockchain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account_block_count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "24236066-fdc2-4f13-aca4-3d25b1d1776c",
+              "name": "Block count for the account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account_block_count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"account_block_count\",\n  \"account\": \"nano_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block_count\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34291ccb-d535-4b75-8cca-69b6ce19c18d",
+          "name": "Get account from public key",
+          "request": {
+            "name": "Get account from public key",
+            "description": {
+              "content": "Returns the account address corresponding to a public key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account_get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "befe20ad-c485-4fc7-9c42-e2634d133338",
+              "name": "Account address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account_get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"account\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "252a5805-bcca-4a5f-9613-83e10190123f",
+          "name": "Get account history",
+          "request": {
+            "name": "Get account history",
+            "description": {
+              "content": "Returns a list of blocks for an account with transaction details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account_history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"raw\": \"<boolean>\",\n  \"head\": \"<string>\",\n  \"offset\": \"<integer>\",\n  \"reverse\": \"<boolean>\",\n  \"include_linked_account\": \"<boolean>\",\n  \"account_filter\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "48153f53-e559-47c5-8c93-411e0c103979",
+              "name": "Account history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"raw\": \"<boolean>\",\n  \"head\": \"<string>\",\n  \"offset\": \"<integer>\",\n  \"reverse\": \"<boolean>\",\n  \"include_linked_account\": \"<boolean>\",\n  \"account_filter\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"account\": \"string\",\n  \"history\": [\n    {\n      \"type\": \"send\",\n      \"account\": \"string\",\n      \"amount\": \"string\",\n      \"hash\": \"string\",\n      \"height\": \"string\",\n      \"local_timestamp\": \"string\"\n    },\n    {\n      \"type\": \"receive\",\n      \"account\": \"string\",\n      \"amount\": \"string\",\n      \"hash\": \"string\",\n      \"height\": \"string\",\n      \"local_timestamp\": \"string\"\n    }\n  ],\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d62d4b1f-6180-4fd6-b796-4964bf0f477c",
+          "name": "Get account info",
+          "request": {
+            "name": "Get account info",
+            "description": {
+              "content": "Returns detailed information about an account's blockchain state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account_info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\",\n  \"representative\": \"<boolean>\",\n  \"weight\": \"<boolean>\",\n  \"receivable\": \"<boolean>\",\n  \"include_confirmed\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68a1bcca-73eb-4677-90a3-2549c4bbf222",
+              "name": "Account information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account_info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"account_info\",\n  \"account\": \"nano_3t6k35gi95xu6tergt6p69ck76ogmitsa8mnijtpxm9fkcm736xtoncuohr3\",\n  \"representative\": true,\n  \"weight\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"frontier\": \"string\",\n  \"open_block\": \"string\",\n  \"representative_block\": \"string\",\n  \"balance\": \"string\",\n  \"modified_timestamp\": \"string\",\n  \"block_count\": \"string\",\n  \"representative\": \"string\",\n  \"weight\": \"string\",\n  \"receivable\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60f2c4a7-8be7-4b49-a156-8a12eaecc478",
+          "name": "Get public key for account",
+          "request": {
+            "name": "Get public key for account",
+            "description": {
+              "content": "Returns the public key corresponding to a Nano account address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account_key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a9f94538-2ea9-471f-844e-607832a5ae00",
+              "name": "Public key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account_key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "012365df-6af9-4cf4-8ba6-a4e4d0c5b1ed",
+          "name": "Get account representative",
+          "request": {
+            "name": "Get account representative",
+            "description": {
+              "content": "Returns the representative for an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account_representative"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "846fcc18-befb-4009-a209-1ff2c0651bb0",
+              "name": "Account representative",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account_representative"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"representative\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bcb7bebb-76c4-4170-964f-6a34c576398a",
+          "name": "Get account voting weight",
+          "request": {
+            "name": "Get account voting weight",
+            "description": {
+              "content": "Returns the voting weight for an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account_weight"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81636fea-5b64-47c9-b260-b2be6f573f0d",
+              "name": "Voting weight",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account_weight"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"weight\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af6b3e69-2f28-4105-8d36-2306042a130a",
+          "name": "Get balances for multiple accounts",
+          "request": {
+            "name": "Get balances for multiple accounts",
+            "description": {
+              "content": "Returns balances for a list of Nano accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts_balances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"accounts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include_only_confirmed\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a034824a-ebfd-45ee-89a4-e00a76fc9a54",
+              "name": "Balances for each account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts_balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"accounts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include_only_confirmed\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"balances\": {\n    \"key_0\": {\n      \"balance\": \"string\",\n      \"pending\": \"string\",\n      \"receivable\": \"string\"\n    },\n    \"key_1\": {\n      \"balance\": \"string\",\n      \"pending\": \"string\",\n      \"receivable\": \"string\"\n    },\n    \"key_2\": {\n      \"balance\": \"string\",\n      \"pending\": \"string\",\n      \"receivable\": \"string\"\n    },\n    \"key_3\": {\n      \"balance\": \"string\",\n      \"pending\": \"string\",\n      \"receivable\": \"string\"\n    }\n  },\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b7f5cac-34aa-40eb-a137-412fd373ebdd",
+          "name": "Get frontiers for multiple accounts",
+          "request": {
+            "name": "Get frontiers for multiple accounts",
+            "description": {
+              "content": "Returns the frontier (head block hash) for each account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts_frontiers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"accounts\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19f74fb3-d423-4547-a71f-20c0156ca50e",
+              "name": "Frontier hashes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts_frontiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"accounts\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"frontiers\": {\n    \"key_0\": \"string\"\n  },\n  \"errors\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45c59016-af89-4a42-82a2-d3370a3f4e7c",
+          "name": "Get receivable blocks for multiple accounts",
+          "request": {
+            "name": "Get receivable blocks for multiple accounts",
+            "description": {
+              "content": "Returns pending/receivable blocks for a list of accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts_receivable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"accounts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"count\": \"<integer>\",\n  \"threshold\": \"<string>\",\n  \"source\": \"<boolean>\",\n  \"include_active\": \"<boolean>\",\n  \"sorting\": \"<boolean>\",\n  \"include_only_confirmed\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b3d8e79d-aedf-4bea-9a49-fa9621612d1c",
+              "name": "Receivable blocks per account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts_receivable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"accounts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"count\": \"<integer>\",\n  \"threshold\": \"<string>\",\n  \"source\": \"<boolean>\",\n  \"include_active\": \"<boolean>\",\n  \"sorting\": \"<boolean>\",\n  \"include_only_confirmed\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"blocks\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a444a55-f8d6-4d66-8f43-b3caa0e68619",
+          "name": "Get representatives for multiple accounts",
+          "request": {
+            "name": "Get representatives for multiple accounts",
+            "description": {
+              "content": "Returns the representative for each of the given accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts_representatives"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"accounts\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e2a9593-60ff-457c-920a-0f65c95dc0b2",
+              "name": "Representatives per account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts_representatives"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"accounts\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"representatives\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"errors\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4d5014d-ebe2-4c2d-bce4-e840ccf28f87",
+          "name": "Get receivable blocks for account",
+          "request": {
+            "name": "Get receivable blocks for account",
+            "description": {
+              "content": "Returns pending receivable blocks for a single account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "receivable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"threshold\": \"<string>\",\n  \"source\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19279e7c-1a52-4263-bf93-734cb9a0c537",
+              "name": "Receivable block hashes or amounts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "receivable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"threshold\": \"<string>\",\n  \"source\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"blocks\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42d9d60a-743d-420e-8b6d-ba607afdd8f4",
+          "name": "Check if receivable block exists",
+          "request": {
+            "name": "Check if receivable block exists",
+            "description": {
+              "content": "Checks whether a specific block hash is receivable for an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "receivable_exists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"hash\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9469fb66-f215-45bb-b6bd-8695e08f5a43",
+              "name": "Existence check result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "receivable_exists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"hash\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exists\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3555e583-86c6-4458-a1f5-a9f33d860a7e",
+          "name": "Validate account number",
+          "request": {
+            "name": "Validate account number",
+            "description": {
+              "content": "Checks whether the given account address is valid.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "validate_account_number"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "296e4aca-8771-476a-af5b-5d172c69cb65",
+              "name": "Validation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate_account_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": \"0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:7076",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "70b08525-f15c-4028-a769-4730e8e59b27",
+    "name": "Nano RPC Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Nano RPC API is a JSON-RPC HTTP interface for interacting with the Nano network. Nano is a feeless, instant digital currency using a block-lattice architecture where each account maintains its own blockchain. The RPC API supports account queries, block operations, wallet management, node diagnostics, and unit conversions. All requests are POST with a JSON body containing an \"action\" field identifying the RPC command.\n\n\nContact Support:\n Name: Nano Foundation\n Email: integrations@nano.org",
+      "type": "text/plain"
+    }
+  }
+}

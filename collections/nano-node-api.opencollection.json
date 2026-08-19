@@ -1,0 +1,333 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nano RPC Accounts Node API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Node",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bootstrap from peer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/bootstrap",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a bootstrap sync from the specified peer node."
+        },
+        {
+          "info": {
+            "name": "Bootstrap from any peer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/bootstrap_any",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a bootstrap sync from any available peer."
+        },
+        {
+          "info": {
+            "name": "Lazy bootstrap from hash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/bootstrap_lazy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates lazy (hash-based) bootstrap starting from a specific block."
+        },
+        {
+          "info": {
+            "name": "Get bootstrap status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/bootstrap_status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns current bootstrap attempt status and connection counts."
+        },
+        {
+          "info": {
+            "name": "Get active confirmations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/confirmation_active",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of currently active confirmation elections."
+        },
+        {
+          "info": {
+            "name": "Get confirmation history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/confirmation_history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns historical data about completed confirmation elections."
+        },
+        {
+          "info": {
+            "name": "Get confirmation info for root",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/confirmation_info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns information about the election for a specific block root."
+        },
+        {
+          "info": {
+            "name": "Get confirmation quorum info",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/confirmation_quorum",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns quorum and online stake information for confirmation."
+        },
+        {
+          "info": {
+            "name": "Get delegators for representative",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/delegators",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns all accounts delegating voting weight to the given representative."
+        },
+        {
+          "info": {
+            "name": "Get delegator count for representative",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/delegators_count",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the number of accounts delegating to a representative."
+        },
+        {
+          "info": {
+            "name": "Get election statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/election_statistics",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns statistics about the active elections subsystem (v27.0+)."
+        },
+        {
+          "info": {
+            "name": "Send keepalive",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/keepalive",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a keepalive packet to the specified peer."
+        },
+        {
+          "info": {
+            "name": "Get node identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/node_id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the public and private node identity keys."
+        },
+        {
+          "info": {
+            "name": "Get connected peers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/peers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of connected peers and their protocol versions."
+        },
+        {
+          "info": {
+            "name": "Populate election backlog",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/populate_backlog",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds unconfirmed blocks to the confirmation backlog queue."
+        },
+        {
+          "info": {
+            "name": "Get all representatives",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/representatives",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns all representatives and their voting weights."
+        },
+        {
+          "info": {
+            "name": "Get online representatives",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/representatives_online",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns representatives that have recently voted."
+        },
+        {
+          "info": {
+            "name": "Get node statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/stats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns internal node statistics by category."
+        },
+        {
+          "info": {
+            "name": "Get network telemetry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/telemetry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns telemetry data from connected peers."
+        },
+        {
+          "info": {
+            "name": "Get node uptime",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/uptime",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns how many seconds the node has been running."
+        },
+        {
+          "info": {
+            "name": "Get node version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/version",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the RPC, store, and network protocol versions of the node."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

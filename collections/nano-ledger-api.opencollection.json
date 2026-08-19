@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nano RPC Accounts Ledger API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ledger",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available supply",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/available_supply",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the amount of Nano available in circulation."
+        },
+        {
+          "info": {
+            "name": "Get frontier count",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/frontier_count",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the total number of account frontiers in the ledger."
+        },
+        {
+          "info": {
+            "name": "Get all frontiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/frontiers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns frontier hashes starting from the given account, up to count."
+        },
+        {
+          "info": {
+            "name": "Query ledger entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/ledger",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of account frontier information from the ledger."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

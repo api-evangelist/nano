@@ -1,0 +1,243 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nano RPC Accounts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get account balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_balance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the balance for an account in raw units."
+        },
+        {
+          "info": {
+            "name": "Get account block count",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_block_count",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the number of blocks in the account's blockchain."
+        },
+        {
+          "info": {
+            "name": "Get account from public key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the account address corresponding to a public key."
+        },
+        {
+          "info": {
+            "name": "Get account history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of blocks for an account with transaction details."
+        },
+        {
+          "info": {
+            "name": "Get account info",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns detailed information about an account's blockchain state."
+        },
+        {
+          "info": {
+            "name": "Get public key for account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_key",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the public key corresponding to a Nano account address."
+        },
+        {
+          "info": {
+            "name": "Get account representative",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_representative",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the representative for an account."
+        },
+        {
+          "info": {
+            "name": "Get account voting weight",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_weight",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the voting weight for an account."
+        },
+        {
+          "info": {
+            "name": "Get balances for multiple accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/accounts_balances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns balances for a list of Nano accounts."
+        },
+        {
+          "info": {
+            "name": "Get frontiers for multiple accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/accounts_frontiers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the frontier (head block hash) for each account."
+        },
+        {
+          "info": {
+            "name": "Get receivable blocks for multiple accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/accounts_receivable",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns pending/receivable blocks for a list of accounts."
+        },
+        {
+          "info": {
+            "name": "Get representatives for multiple accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/accounts_representatives",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the representative for each of the given accounts."
+        },
+        {
+          "info": {
+            "name": "Get receivable blocks for account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/receivable",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns pending receivable blocks for a single account."
+        },
+        {
+          "info": {
+            "name": "Check if receivable block exists",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/receivable_exists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Checks whether a specific block hash is receivable for an account."
+        },
+        {
+          "info": {
+            "name": "Validate account number",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/validate_account_number",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Checks whether the given account address is valid."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

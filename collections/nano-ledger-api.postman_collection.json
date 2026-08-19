@@ -1,0 +1,396 @@
+{
+  "item": [
+    {
+      "id": "c5ab9f11-edbd-496c-8ed8-6acb024057ec",
+      "name": "Ledger",
+      "description": {
+        "content": "Ledger-level queries for supply, frontiers, and account data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3b23f859-a7ae-4178-a21a-115da0035adf",
+          "name": "Get available supply",
+          "request": {
+            "name": "Get available supply",
+            "description": {
+              "content": "Returns the amount of Nano available in circulation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "available_supply"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e3d88562-8ff9-4756-9169-4f1452d2ce48",
+              "name": "Available supply in raw units",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "available_supply"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"available\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ade4f47-6565-44fa-9148-a1d1acaa776a",
+          "name": "Get frontier count",
+          "request": {
+            "name": "Get frontier count",
+            "description": {
+              "content": "Returns the total number of account frontiers in the ledger.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "frontier_count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e6dcba60-8bd8-4b7d-b038-93d43ddb7f42",
+              "name": "Frontier count",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "frontier_count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b2b3010-a577-4002-9c4d-6b06e8412d75",
+          "name": "Get all frontiers",
+          "request": {
+            "name": "Get all frontiers",
+            "description": {
+              "content": "Returns frontier hashes starting from the given account, up to count.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "frontiers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\",\n  \"count\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d9bf01c7-afac-476e-bf52-f25f14196879",
+              "name": "Frontier hashes per account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "frontiers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\",\n  \"count\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"frontiers\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "336ee478-4d24-4ca2-ba2a-9120a78d4806",
+          "name": "Query ledger entries",
+          "request": {
+            "name": "Query ledger entries",
+            "description": {
+              "content": "Returns a list of account frontier information from the ledger.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ledger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"representative\": \"<boolean>\",\n  \"weight\": \"<boolean>\",\n  \"receivable\": \"<boolean>\",\n  \"modified_since\": \"<integer>\",\n  \"sorting\": \"<boolean>\",\n  \"threshold\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e6fb7fce-9775-4849-80c1-eca4f230df5d",
+              "name": "Ledger account entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ledger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"account\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"representative\": \"<boolean>\",\n  \"weight\": \"<boolean>\",\n  \"receivable\": \"<boolean>\",\n  \"modified_since\": \"<integer>\",\n  \"sorting\": \"<boolean>\",\n  \"threshold\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accounts\": {\n    \"key_0\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:7076",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1b9cc2f6-c731-4a62-aae8-fee20c89027b",
+    "name": "Nano RPC Accounts Ledger API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Nano RPC API is a JSON-RPC HTTP interface for interacting with the Nano network. Nano is a feeless, instant digital currency using a block-lattice architecture where each account maintains its own blockchain. The RPC API supports account queries, block operations, wallet management, node diagnostics, and unit conversions. All requests are POST with a JSON body containing an \"action\" field identifying the RPC command.\n\n\nContact Support:\n Name: Nano Foundation\n Email: integrations@nano.org",
+      "type": "text/plain"
+    }
+  }
+}

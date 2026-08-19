@@ -1,0 +1,528 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nano RPC Accounts Wallets API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create account in wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a new account in the specified wallet."
+        },
+        {
+          "info": {
+            "name": "List wallet accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns all accounts stored in the given wallet."
+        },
+        {
+          "info": {
+            "name": "Move accounts between wallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_move",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Moves accounts from one wallet to another."
+        },
+        {
+          "info": {
+            "name": "Remove account from wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes an account from the wallet."
+        },
+        {
+          "info": {
+            "name": "Set account representative",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/account_representative_set",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Changes the representative for an account in a wallet."
+        },
+        {
+          "info": {
+            "name": "Create multiple wallet accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/accounts_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch-creates multiple accounts in the given wallet."
+        },
+        {
+          "info": {
+            "name": "Change wallet password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/password_change",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets a new password for the given wallet."
+        },
+        {
+          "info": {
+            "name": "Enter wallet password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/password_enter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unlocks the wallet with the provided password."
+        },
+        {
+          "info": {
+            "name": "Check if wallet password is valid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/password_valid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Checks whether the current wallet password is valid (wallet is unlocked)."
+        },
+        {
+          "info": {
+            "name": "Receive a block",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/receive",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a receive block for a pending transaction."
+        },
+        {
+          "info": {
+            "name": "Get receive minimum",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/receive_minimum",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the minimum receive amount configured for the node."
+        },
+        {
+          "info": {
+            "name": "Set receive minimum",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/receive_minimum_set",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the minimum receive amount for the node."
+        },
+        {
+          "info": {
+            "name": "Search for receivable blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/search_receivable",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches for pending receivable blocks for all accounts in the wallet."
+        },
+        {
+          "info": {
+            "name": "Search receivable blocks for all wallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/search_receivable_all",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches for pending receivable blocks across all wallets on the node."
+        },
+        {
+          "info": {
+            "name": "Send Nano",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/send",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and publishes a send block to transfer Nano to a destination."
+        },
+        {
+          "info": {
+            "name": "Add private key to wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds an existing private key to a wallet."
+        },
+        {
+          "info": {
+            "name": "Add watch-only accounts to wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_add_watch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds accounts to watch in the wallet without private keys."
+        },
+        {
+          "info": {
+            "name": "Get balances for all wallet accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_balances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns balances for all accounts in the given wallet."
+        },
+        {
+          "info": {
+            "name": "Change wallet seed",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_change_seed",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces the wallet seed with a new one."
+        },
+        {
+          "info": {
+            "name": "Check if wallet contains account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_contains",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns whether the wallet contains the given account."
+        },
+        {
+          "info": {
+            "name": "Create new wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new wallet and returns its identifier."
+        },
+        {
+          "info": {
+            "name": "Destroy a wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_destroy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Permanently deletes a wallet and all its accounts."
+        },
+        {
+          "info": {
+            "name": "Export wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_export",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exports wallet data as a JSON string containing the seed."
+        },
+        {
+          "info": {
+            "name": "Get frontiers for wallet accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_frontiers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the frontier block for each account in the wallet."
+        },
+        {
+          "info": {
+            "name": "Get wallet transaction history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns all transactions for accounts in the wallet."
+        },
+        {
+          "info": {
+            "name": "Get wallet information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns metadata about the given wallet."
+        },
+        {
+          "info": {
+            "name": "Get ledger for wallet accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_ledger",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns ledger information for all accounts in the wallet."
+        },
+        {
+          "info": {
+            "name": "Lock a wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_lock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Locks the specified wallet, requiring password re-entry."
+        },
+        {
+          "info": {
+            "name": "Check if wallet is locked",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_locked",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns whether the wallet is currently locked."
+        },
+        {
+          "info": {
+            "name": "Get receivable blocks for wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_receivable",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns pending receivable blocks for all wallet accounts."
+        },
+        {
+          "info": {
+            "name": "Get wallet representative",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_representative",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the default representative for the wallet."
+        },
+        {
+          "info": {
+            "name": "Set wallet representative",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_representative_set",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the default representative for the wallet."
+        },
+        {
+          "info": {
+            "name": "Republish wallet blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_republish",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Republishes blocks for all accounts in the wallet."
+        },
+        {
+          "info": {
+            "name": "Get work for wallet account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/wallet_work_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the cached proof-of-work for an account in the wallet."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

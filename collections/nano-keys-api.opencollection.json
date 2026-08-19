@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nano RPC Accounts Keys API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate deterministic key pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/deterministic_key",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Derives a key pair from a seed and index using BIP-like derivation."
+        },
+        {
+          "info": {
+            "name": "Create new key pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/key_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a new random private/public key pair and account address."
+        },
+        {
+          "info": {
+            "name": "Expand private key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/key_expand",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Derives the public key and account from a given private key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nano RPC Accounts Blocks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blocks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get account for block",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/block_account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the account that owns the given block hash."
+        },
+        {
+          "info": {
+            "name": "Request block confirmation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/block_confirm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requests active confirmation of a block by the network."
+        },
+        {
+          "info": {
+            "name": "Get total block count",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/block_count",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the total number of blocks in the ledger."
+        },
+        {
+          "info": {
+            "name": "Create a block",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/block_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new state block for the Nano network."
+        },
+        {
+          "info": {
+            "name": "Compute block hash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/block_hash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the hash of a given block without publishing it."
+        },
+        {
+          "info": {
+            "name": "Get block info",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/block_info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns detailed information about a specific block hash."
+        },
+        {
+          "info": {
+            "name": "Get multiple blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/blocks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns block contents for a list of block hashes."
+        },
+        {
+          "info": {
+            "name": "Get detailed info for multiple blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/blocks_info",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns detailed information for a list of block hashes."
+        },
+        {
+          "info": {
+            "name": "Get chain of blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/chain",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of block hashes starting from the given block, traversing backwards."
+        },
+        {
+          "info": {
+            "name": "Process a block",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/process",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publishes a signed block to the Nano network."
+        },
+        {
+          "info": {
+            "name": "Republish blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/republish",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rebroadcasts blocks starting from the given hash to network peers."
+        },
+        {
+          "info": {
+            "name": "Sign a block",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/sign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Signs a block with a provided private key or wallet."
+        },
+        {
+          "info": {
+            "name": "Get successor blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:7076/successors",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns successive block hashes forward from the given block."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
