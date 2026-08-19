@@ -16,7 +16,7 @@ image: https://nano.org/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/nano/refs/heads/main/apis.yml
 created: '2026-06-14'
 modified: '2026-06-14'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 tags:
   - Cryptocurrency
   - Payments
