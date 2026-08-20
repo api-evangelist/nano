@@ -31,6 +31,8 @@ apis:
   humanURL: https://docs.nano.org/commands/rpc-protocol/
   baseURL: http://localhost:7076
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
