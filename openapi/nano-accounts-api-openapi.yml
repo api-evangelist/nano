@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Nano RPC Accounts API
   description: 'The Nano RPC API is a JSON-RPC HTTP interface for interacting with the Nano network. Nano is a feeless, instant digital currency using a block-lattice architecture where each account maintains its own blockchain. The RPC API supports account queries, block operations, wallet management, node diagnostics, and unit conversions. All requests are POST with a JSON body containing an "action" field identifying the RPC command.
@@ -607,18 +607,6 @@ paths:
                     - '1'
 components:
   schemas:
-    AccountBalanceResponse:
-      type: object
-      properties:
-        balance:
-          type: string
-          description: Confirmed balance in raw units
-        pending:
-          type: string
-          description: Pending (receivable) balance in raw units (deprecated alias)
-        receivable:
-          type: string
-          description: Pending (receivable) balance in raw units
     AccountHistoryResponse:
       type: object
       properties:
@@ -672,6 +660,18 @@ components:
           type: string
         receivable:
           type: string
+    AccountBalanceResponse:
+      type: object
+      properties:
+        balance:
+          type: string
+          description: Confirmed balance in raw units
+        pending:
+          type: string
+          description: Pending (receivable) balance in raw units (deprecated alias)
+        receivable:
+          type: string
+          description: Pending (receivable) balance in raw units
 externalDocs:
   description: Nano RPC Protocol Documentation
   url: https://docs.nano.org/commands/rpc-protocol/
