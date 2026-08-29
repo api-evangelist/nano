@@ -1,5 +1,16 @@
 name: Nano
 description: Nano is a feeless, instant digital currency using a block-lattice architecture. It provides a JSON-RPC HTTP API for querying accounts, retrieving block information, managing wallets, processing transactions, and interacting with the Nano network. Each account maintains its own blockchain, enabling fast and lightweight consensus without mining.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
