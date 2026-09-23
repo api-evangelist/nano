@@ -1,14 +1,7 @@
 {
   "provider": "nano",
   "sources": [
-    "nano-accounts-api-openapi.yml",
-    "nano-blocks-api-openapi.yml",
-    "nano-keys-api-openapi.yml",
-    "nano-ledger-api-openapi.yml",
-    "nano-node-api-openapi.yml",
-    "nano-unit-conversion-api-openapi.yml",
-    "nano-wallets-api-openapi.yml",
-    "nano-work-api-openapi.yml"
+    "_original/openapi.yml"
   ],
   "outputs": [
     "nano-accounts-api-openapi.yml",
@@ -24,15 +17,18 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "nano-accounts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "nano-blocks-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "nano-keys-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "nano-ledger-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "nano-node-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "nano-unit-conversion-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "nano-wallets-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "nano-work-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "nano-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nano-blocks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nano-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nano-ledger-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nano-node-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nano-unit-conversion-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nano-wallets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nano-work-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
