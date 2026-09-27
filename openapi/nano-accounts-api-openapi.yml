@@ -617,30 +617,6 @@ components:
         receivable:
           type: string
           description: Pending (receivable) balance in raw units
-    AccountInfoResponse:
-      type: object
-      properties:
-        frontier:
-          type: string
-          description: Hash of the head block
-        open_block:
-          type: string
-          description: Hash of the account open block
-        representative_block:
-          type: string
-        balance:
-          type: string
-          description: Confirmed balance in raw units
-        modified_timestamp:
-          type: string
-        block_count:
-          type: string
-        representative:
-          type: string
-        weight:
-          type: string
-        receivable:
-          type: string
     AccountHistoryResponse:
       type: object
       properties:
@@ -669,6 +645,30 @@ components:
               local_timestamp:
                 type: string
         previous:
+          type: string
+    AccountInfoResponse:
+      type: object
+      properties:
+        frontier:
+          type: string
+          description: Hash of the head block
+        open_block:
+          type: string
+          description: Hash of the account open block
+        representative_block:
+          type: string
+        balance:
+          type: string
+          description: Confirmed balance in raw units
+        modified_timestamp:
+          type: string
+        block_count:
+          type: string
+        representative:
+          type: string
+        weight:
+          type: string
+        receivable:
           type: string
 externalDocs:
   description: Nano RPC Protocol Documentation
