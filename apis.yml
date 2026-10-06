@@ -26,7 +26,7 @@ accessModel:
 image: https://nano.org/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/nano/refs/heads/main/apis.yml
 created: '2026-06-14'
-modified: '2026-06-14'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 tags:
   - Cryptocurrency
@@ -135,6 +135,10 @@ apis:
   - type: Documentation
     url: https://docs.nano.org/commands/rpc-protocol/
 common:
+  - url: https://nano.org/en/news
+    type: Blog
+  - url: https://nano.org/en/news/rss
+    type: BlogRSS
   - type: AgenticAccess
     url: agentic-access/nano-agentic-access.yml
   - type: DomainSecurity
