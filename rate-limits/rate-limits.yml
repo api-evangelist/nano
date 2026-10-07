@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Nano RPC Rate Limits
 description: The Nano RPC protocol does not impose rate limits at the protocol level. Nano is a decentralized, open-source network where developers run their own nodes. Rate limiting, if any, is determined by the node operator or third-party RPC provider. The Nano Foundation does not operate a public hosted API service with defined rate limits.
 rateLimits:
