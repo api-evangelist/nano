@@ -135,6 +135,12 @@ apis:
   - type: Documentation
     url: https://docs.nano.org/commands/rpc-protocol/
 common:
+  - type: Plans
+    url: plans/plans.yml
+  - type: RateLimits
+    url: rate-limits/rate-limits.yml
+  - type: FinOps
+    url: finops/finops.yml
   - url: https://nano.org/en/news
     type: Blog
   - url: https://nano.org/en/news/rss
