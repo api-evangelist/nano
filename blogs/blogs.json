@@ -2,16 +2,28 @@
   "repo": "nano",
   "feeds": [
     {
-      "source": "https://nano.org",
-      "feed_url": "https://nano.org/en/blog/rss/",
-      "title": "Nano Blog",
+      "source": "https://nano.org/en/news",
+      "feed_url": "https://nano.org/en/news/rss",
+      "title": "",
       "saved": 0,
-      "error": "parse_failed",
-      "nature": "vendor-blog",
-      "nature_basis": "path_blog"
+      "method": "discovered"
+    },
+    {
+      "source": "https://nano.org/en/news/rss",
+      "feed_url": "https://nano.org/en/news/rss",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://nano.org/en/blog/rss/",
+      "feed_url": "https://nano.org/en/blog/rss/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-10-03T12:15:37Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 10,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
