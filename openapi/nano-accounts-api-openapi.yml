@@ -605,18 +605,6 @@ paths:
                     - '1'
 components:
   schemas:
-    AccountBalanceResponse:
-      type: object
-      properties:
-        balance:
-          type: string
-          description: Confirmed balance in raw units
-        pending:
-          type: string
-          description: Pending (receivable) balance in raw units (deprecated alias)
-        receivable:
-          type: string
-          description: Pending (receivable) balance in raw units
     AccountHistoryResponse:
       type: object
       properties:
@@ -646,6 +634,18 @@ components:
                 type: string
         previous:
           type: string
+    AccountBalanceResponse:
+      type: object
+      properties:
+        balance:
+          type: string
+          description: Confirmed balance in raw units
+        pending:
+          type: string
+          description: Pending (receivable) balance in raw units (deprecated alias)
+        receivable:
+          type: string
+          description: Pending (receivable) balance in raw units
     AccountInfoResponse:
       type: object
       properties:
