@@ -3,17 +3,17 @@
   "feeds": [
     {
       "source": "https://nano.org/en/news",
-      "feed_url": "https://nano.org/en/news/rss",
+      "feed_url": "https://nano.org/en/news",
       "title": "",
       "saved": 0,
-      "method": "discovered"
+      "method": "none"
     },
     {
       "source": "https://nano.org/en/news/rss",
       "feed_url": "https://nano.org/en/news/rss",
       "title": "",
       "saved": 0,
-      "method": "feed"
+      "method": "none"
     },
     {
       "source": "https://nano.org/en/blog/rss/",
@@ -23,7 +23,7 @@
       "method": "none"
     }
   ],
-  "fetched": "2026-10-10T13:15:00Z",
+  "fetched": "2026-10-17T14:53:57Z",
   "post_count": 10,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
