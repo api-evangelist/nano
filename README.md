@@ -64,34 +64,163 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Nano is a feeless, instant digital currency built on a block-lattice architecture. It provides a JSON-RPC HTTP API for querying accounts, retrieving block information, managing wallets, processing transactions, and interacting with the Nano network. Each account maintains its own blockchain, enabling fast consensus without mining and with zero transaction fees.
+Nano is a feeless, instant digital currency using a block-lattice architecture. It provides a JSON-RPC HTTP API for querying accounts, retrieving block information, managing wallets, processing transactions, and interacting with the Nano network. Each account maintains its own blockchain, enabling fast and lightweight consensus without mining.
 
-## API Overview
+**Areas:** Cryptocurrency · Payments · Blockchain · Feeless · Instant Payments · Digital Currency
 
-The Nano RPC API accepts JSON HTTP POST requests. Developers run their own Nano nodes and interact with the local RPC server (default port 7076). The API is organized into the following categories:
+## Nano on APIs.io
 
-- **Account Operations** - Query balances, history, representatives, and voting weight
-- **Block Operations** - Create, query, publish, and confirm blocks; generate proof-of-work
-- **Node Operations** - Bootstrap, peer management, telemetry, statistics, and network diagnostics
-- **Wallet Operations** - Manage local wallets, send and receive funds (development/testing)
-- **Unit Conversion** - Convert between Nano and raw denomination units
+Everything profiled for Nano is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nano/](https://apis.io/providers/nano/)** — or go straight to one of the APIs or properties below.
 
-## Resources
+### APIs (8)
+
+- [Nano Accounts API](https://apis.io/apis/nano/nano-accounts-api/) — Account balance, history, representative, and frontier queries
+- [Nano Blocks API](https://apis.io/apis/nano/nano-blocks-api/) — Block creation, processing, signing, and querying operations
+- [Nano Keys API](https://apis.io/apis/nano/nano-keys-api/) — Cryptographic key generation and derivation
+- [Nano Ledger API](https://apis.io/apis/nano/nano-ledger-api/) — Ledger-level queries for supply, frontiers, and account data
+- [Nano Node API](https://apis.io/apis/nano/nano-node-api/) — Node diagnostics, bootstrapping, peers, and confirmation management
+- [Nano Unit Conversion API](https://apis.io/apis/nano/nano-unit-conversion-api/) — Conversion between Nano and raw unit denominations
+- [Nano Wallets API](https://apis.io/apis/nano/nano-wallets-api/) — Local wallet management for development and testing
+- [Nano Work API](https://apis.io/apis/nano/nano-work-api/) — Proof-of-work generation, validation, and caching
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Nano Agentic Access](https://apis.io/agentic-access/nano/nano-agentic-access/)
+
+#### JSON Schema (2)
+
+The data models the API reads and writes.
+
+- [Nano State Block](https://apis.io/schemas/nano/nano-block/)
+- [Nano RPC Request](https://apis.io/schemas/nano/nano-rpc-request/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Nano Context](https://apis.io/jsonld/nano/nano-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Nano RPC Vocabulary](https://apis.io/vocabularies/nano/nano-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Account Balance](https://apis.io/examples/nano/account-balance/)
+- [Block Info](https://apis.io/examples/nano/block-info/)
+- [Send Transaction](https://apis.io/examples/nano/send-transaction/)
+- [Unit Conversion](https://apis.io/examples/nano/unit-conversion/)
+
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [Nano RPC Accounts API](https://apis.io/collections/nano/open-nano-accounts-api/)
+- [Nano RPC Accounts Blocks API](https://apis.io/collections/nano/open-nano-blocks-api/)
+- [Nano RPC Accounts Keys API](https://apis.io/collections/nano/open-nano-keys-api/)
+- [Nano RPC Accounts Ledger API](https://apis.io/collections/nano/open-nano-ledger-api/)
+- [Nano RPC Accounts Node API](https://apis.io/collections/nano/open-nano-node-api/)
+- [Nano RPC Accounts Unit Conversion API](https://apis.io/collections/nano/open-nano-unit-conversion-api/)
+- [Nano RPC Accounts Wallets API](https://apis.io/collections/nano/open-nano-wallets-api/)
+- [Nano RPC Accounts Work API](https://apis.io/collections/nano/open-nano-work-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Nano — jsonschema rules](https://apis.io/rules/nano/nano-jsonschema-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Nano Domain Security](https://apis.io/security/nano/nano-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Plans](https://apis.io/plans/nano/plans/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rate Limits](https://apis.io/rate-limits/nano/rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Finops](https://apis.io/finops/nano/finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://nano.org)
 - [Documentation](https://docs.nano.org)
-- [RPC Protocol Reference](https://docs.nano.org/commands/rpc-protocol/)
-- [Integration Guides](https://docs.nano.org/integration-guides/)
-- [Living Whitepaper](https://docs.nano.org/living-whitepaper/)
-- [Developer Tools](https://hub.nano.org/developer-tools)
-- [GitHub](https://github.com/nanocurrency)
-- [Release Notes](https://docs.nano.org/releases/current-release-notes/)
+- [Blog](https://nano.org/en/news)
 
-## Contact
+## API Evangelist rating
 
-- Developer Support: integrations@nano.org
-- Developer Hub: https://nano.org/en/developers
+**Kin Score 21.5** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-## Maintainer
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 44.4 |
+| Contract governance | 9.8 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 9.5 |
+| Access clarity | 5.3 |
 
-[API Evangelist](https://apievangelist.com)
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 9.8** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nano/](https://apis.io/providers/nano/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Nano: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nano/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
